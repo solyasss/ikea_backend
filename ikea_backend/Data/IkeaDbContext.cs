@@ -1,0 +1,138 @@
+using ikea_backend.Models;
+
+namespace ikea_backend.Data;
+
+using Microsoft.EntityFrameworkCore;
+
+public class IkeaDbContext : DbContext
+{
+    public IkeaDbContext(DbContextOptions<IkeaDbContext> options) : base(options) { }
+    public DbSet<Category> Categories => Set<Category>();
+    public DbSet<Product> Products => Set<Product>();
+    public DbSet<ProductCharacteristic> ProductCharacteristics => Set<ProductCharacteristic>();
+    public DbSet<ProductImage> ProductImages => Set<ProductImage>();
+    public DbSet<ProductComment> ProductComments => Set<ProductComment>();
+    public DbSet<Set> Sets => Set<Set>();
+    public DbSet<SetItem> SetItems => Set<SetItem>();
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
+        
+        //1) Category
+        modelBuilder.Entity<Category>()
+            .HasMany(c => c.Children)
+            .WithOne(c => c.Parent)
+            .HasForeignKey(c => c.ParentId)
+            .OnDelete(DeleteBehavior.NoAction);
+        
+        // 2) Product
+        modelBuilder.Entity<Product>().
+            HasOne(p => p.Category)
+            .WithMany()
+            .HasForeignKey(p => p.CategoryId)
+            .OnDelete(DeleteBehavior.Cascade);
+        
+        // 3) ProductCharacteristics
+        modelBuilder.Entity<ProductCharacteristic>()
+            .HasOne(pc => pc.Product)
+            .WithMany()
+            .HasForeignKey(pc => pc.ProductId)
+            .OnDelete(DeleteBehavior.Cascade);
+        
+        // 4) ProductImages
+        modelBuilder.Entity<ProductImage>()
+            .HasOne(pi => pi.Product)
+            .WithMany()
+            .HasForeignKey(pi => pi.ProductId)
+            .OnDelete(DeleteBehavior.Cascade);
+        
+        // 5) ProductComments
+        modelBuilder.Entity<ProductComment>().
+            HasOne(pc => pc.Product)
+            .WithMany()
+            .HasForeignKey(pc => pc.ProductId)
+            .OnDelete(DeleteBehavior.Cascade);
+        
+        //Many to Many
+        // 6) SetItems 
+        modelBuilder.Entity<SetItem>()
+            .HasOne(si => si.Set)
+            .WithMany()
+            .HasForeignKey(si => si.SetId)
+            .OnDelete(DeleteBehavior.Cascade);
+        
+        //  7)  SetItems
+        modelBuilder.Entity<SetItem>()
+            .HasOne(si => si.Product)
+            .WithMany()
+            .HasForeignKey(si => si.ProductId)
+            .OnDelete(DeleteBehavior.Cascade);
+        
+        
+        modelBuilder.Entity<Category>().HasData(
+            new Category { Id = 1, Title = "Гостиная", Slug = "living-room" },
+            new Category { Id = 2, Title = "Спальня", Slug = "bedroom" },
+            new Category { Id = 3, Title = "Кухня и столовая", Slug = "kitchen-and-dining" },
+            new Category { Id = 4, Title = "Ванная", Slug = "bathroom" },
+            new Category { Id = 5, Title = "Офис", Slug = "office" }
+        );
+        modelBuilder.Entity<Category>().HasData(
+            new Category { Id = 6, ParentId = 1, Title = "Диваны", Slug = "sofas" },
+            new Category { Id = 7, ParentId = 1, Title = "Кресла", Slug = "armchairs" },
+            new Category { Id = 8, ParentId = 1, Title = "Журнальные столики", Slug = "coffee-tables" },
+            new Category { Id = 9, ParentId = 1, Title = "Шкафы и полки", Slug = "wardrobes-and-shelves" },
+            new Category { Id = 10, ParentId = 1, Title = "Стеллажи для ТВ", Slug = "tv-stands" },
+            new Category { Id = 11, ParentId = 1, Title = "Ковры", Slug = "carpets" },
+            new Category { Id = 12, ParentId = 1, Title = "Освещение", Slug = "lighting" },
+            new Category { Id = 13, ParentId = 1, Title = "Декор", Slug = "decor" },
+            new Category { Id = 14, ParentId = 1, Title = "Системы хранения", Slug = "storage" },
+            new Category { Id = 15, ParentId = 2, Title = "Кровати", Slug = "beds" },
+            new Category { Id = 16, ParentId = 2, Title = "Матрасы", Slug = "mattresses" },
+            new Category { Id = 17, ParentId = 2, Title = "Шкафы", Slug = "closets" },
+            new Category { Id = 18, ParentId = 3, Title = "Обеденные столы", Slug = "dining-tables" },
+            new Category { Id = 19, ParentId = 3, Title = "Стулья", Slug = "chairs" },
+            new Category { Id = 20, ParentId = 3, Title = "Барные стулья", Slug = "bar-stools" },
+            new Category { Id = 21, ParentId = 3, Title = "Посуда", Slug = "dishes" },
+            new Category { Id = 22, ParentId = 3, Title = "Сервировка стола", Slug = "table-setting" },
+            new Category { Id = 23, ParentId = 3, Title = "Столовые приборы", Slug = "cutlery" },
+            new Category { Id = 24, ParentId = 4, Title = "Полки и шкафчики", Slug = "shelves-and-cabinets" },
+            new Category { Id = 25, ParentId = 4, Title = "Полотенца", Slug = "towels" },
+            new Category { Id = 26, ParentId = 4, Title = "Шторки для душа", Slug = "shower-curtains" },
+            new Category { Id = 27, ParentId = 5, Title = "Письменные столы", Slug = "desks" },
+            new Category { Id = 28, ParentId = 5, Title = "Офисные кресла", Slug = "office-chairs" },
+            new Category { Id = 29, ParentId = 5, Title = "Книжные шкафы", Slug = "bookshelves" },
+            new Category { Id = 30, ParentId = 5, Title = "Настольные лампы", Slug = "desk-lamps" }
+        );
+        modelBuilder.Entity<Product>().HasData(
+            new Product { Id = 1, CategoryId = 19, Name = "Chair", Slug = "chair-1", Price = 59.99m, MainImage = "/src/assets/img/products/product-1.png" },
+            new Product { Id = 2, CategoryId = 12, Name = "Lamp", Slug = "lamp-2", Price = 19.99m, MainImage = "/src/assets/img/products/product-2.png" },
+            new Product { Id = 3, CategoryId = 12, Name = "Lamp", Slug = "lamp-3", Price = 19.99m, MainImage = "/src/assets/img/products/product-3.png" }
+        );
+        modelBuilder.Entity<ProductImage>().HasData(
+            new ProductImage { Id = 1, ProductId = 1, ImageUrl = "/src/assets/img/products/product-1.png", SortOrder = 0 },
+            new ProductImage { Id = 2, ProductId = 2, ImageUrl = "/src/assets/img/products/product-2.png", SortOrder = 0 },
+            new ProductImage { Id = 3, ProductId = 3, ImageUrl = "/src/assets/img/products/product-3.png", SortOrder = 0 }
+        );
+        modelBuilder.Entity<ProductComment>().HasData(
+            new ProductComment { Id = 1, ProductId = 1, UserName = "User1", CommentText = "Nice chair", Rating = 5 },
+            new ProductComment { Id = 2, ProductId = 2, UserName = "User2", CommentText = "Bright lamp", Rating = 4 }
+        );
+        modelBuilder.Entity<ProductCharacteristic>().HasData(
+            new ProductCharacteristic { Id = 1, ProductId = 1, Name = "Material", Value = "Wood" },
+            new ProductCharacteristic { Id = 2, ProductId = 1, Name = "Color", Value = "Brown" },
+            new ProductCharacteristic { Id = 3, ProductId = 2, Name = "Color", Value = "White" }
+        );
+        modelBuilder.Entity<Set>().HasData(
+            new Set { Id = 1, Name = "Набор №1", Slug = "furniture-set-1", ImageUrl = "/src/assets/img/furniture/furniture-1.png" },
+            new Set { Id = 2, Name = "Набор №2", Slug = "furniture-set-2", ImageUrl = "/src/assets/img/furniture/furniture-2.png" },
+            new Set { Id = 3, Name = "Набор №3", Slug = "furniture-set-3", ImageUrl = "/src/assets/img/furniture/furniture-3.png" }
+        );
+        modelBuilder.Entity<SetItem>().HasData(
+            new SetItem { Id = 1, SetId = 1, ProductId = 1, Quantity = 2 },
+            new SetItem { Id = 2, SetId = 1, ProductId = 2, Quantity = 1 },
+            new SetItem { Id = 3, SetId = 2, ProductId = 2, Quantity = 2 },
+            new SetItem { Id = 4, SetId = 2, ProductId = 3, Quantity = 1 },
+            new SetItem { Id = 5, SetId = 3, ProductId = 1, Quantity = 1 }
+        );
+    }
+}

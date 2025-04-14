@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ikea_backend")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cceeabbed1e084a106343b67eb19e1cffd1d69c8")]
 [assembly: System.Reflection.AssemblyProductAttribute("ikea_backend")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ikea_backend")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

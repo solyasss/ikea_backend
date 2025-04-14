@@ -1,13 +1,19 @@
-var builder = WebApplication.CreateBuilder(args);
+using ikea_backend.Data;
+using ikea_backend.Models;
+using Microsoft.EntityFrameworkCore;
 
-// Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<IkeaDbContext>(options =>
+{
+    var connStr = builder.Configuration.GetConnectionString("DefaultConnection");
+    options.UseSqlServer(connStr);
+});
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -16,29 +22,85 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-var summaries = new[]
+app.MapGet("/api/categories", async (IkeaDbContext db) =>
 {
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
+    var list = await db.Categories
+        .Include(c => c.Children)
+        .Select(c => new
+        {
+            c.Id,
+            c.ParentId,
+            c.Title,
+            c.Slug,
+            Children = c.Children.Select(sc => new
+            {
+                sc.Id,
+                sc.ParentId,
+                sc.Title,
+                sc.Slug
+            })
+        })
+        .Where(x => x.ParentId == null)
+        .ToListAsync();
+    return Results.Ok(list);
+});
 
-app.MapGet("/weatherforecast", () =>
+app.MapGet("/api/categories/{id:int}", async (int id, IkeaDbContext db) =>
+{
+    var cat = await db.Categories
+        .Include(c => c.Children)
+        .FirstOrDefaultAsync(c => c.Id == id);
+    if (cat == null) return Results.NotFound();
+    var result = new
     {
-        var forecast = Enumerable.Range(1, 5).Select(index =>
-                new WeatherForecast
-                (
-                    DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-                    Random.Shared.Next(-20, 55),
-                    summaries[Random.Shared.Next(summaries.Length)]
-                ))
-            .ToArray();
-        return forecast;
-    })
-    .WithName("GetWeatherForecast")
-    .WithOpenApi();
+        cat.Id,
+        cat.ParentId,
+        cat.Title,
+        cat.Slug,
+        Children = cat.Children.Select(sc => new
+        {
+            sc.Id,
+            sc.ParentId,
+            sc.Title,
+            sc.Slug
+        })
+    };
+    return Results.Ok(result);
+});
+
+app.MapPost("/api/categories", async (Category input, IkeaDbContext db) =>
+{
+    db.Categories.Add(input);
+    await db.SaveChangesAsync();
+    return Results.Created($"/api/categories/{input.Id}", input);
+});
+
+app.MapPut("/api/categories/{id:int}", async (int id, Category input, IkeaDbContext db) =>
+{
+    var cat = await db.Categories.FindAsync(id);
+    if (cat == null) return Results.NotFound();
+    cat.Title = input.Title;
+    cat.Slug = input.Slug;
+    cat.ParentId = input.ParentId;
+    await db.SaveChangesAsync();
+    return Results.Ok(cat);
+});
+
+app.MapDelete("/api/categories/{id:int}", async (int id, IkeaDbContext db) =>
+{
+    var cat = await db.Categories
+        .Include(c => c.Children)
+        .FirstOrDefaultAsync(c => c.Id == id);
+    if (cat == null) return Results.NotFound();
+    db.Categories.Remove(cat);
+    await db.SaveChangesAsync();
+    return Results.Ok(cat);
+});
+
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<IkeaDbContext>();
+    db.Database.Migrate();
+}
 
 app.Run();
-
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}

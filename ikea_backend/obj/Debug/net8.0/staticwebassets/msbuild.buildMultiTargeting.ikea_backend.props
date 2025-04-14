@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\ikea_backend.props" />
+</Project>
