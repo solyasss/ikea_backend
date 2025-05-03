@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ikea_backend")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+388308b0dcc2ecfbda4925de4430d19c3b15e022")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e32d07c8fc8c623fa701634dc75adcda26da281a")]
 [assembly: System.Reflection.AssemblyProductAttribute("ikea_backend")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ikea_backend")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
