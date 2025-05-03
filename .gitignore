@@ -402,8 +402,8 @@ FodyWeavers.xsd
 # End of https://www.toptal.com/developers/gitignore/api/csharp
 ### DotnetCore ###
 # .NET Core build folders
-ikea_backend/bin/
-ikea_backend/obj/
+ikea_backend/bin/*
+ikea_backend/obj/*
 
 # Common node modules locations
 /node_modules
