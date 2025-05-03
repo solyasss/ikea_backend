@@ -99,7 +99,7 @@ app.MapDelete("/api/categories/{id:int}", async (int id, IkeaDbContext db) =>
 
 using (var scope = app.Services.CreateScope())
 {
-    var db = scope.ServiceProvider.GetRequiredService<IkeaDbContext>();
+    var db = scope.ServiceProvider.GetRequiredService<IkeaDbContext>(); // AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
     db.Database.Migrate();
 }
 
