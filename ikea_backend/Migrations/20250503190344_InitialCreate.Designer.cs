@@ -11,7 +11,7 @@ using ikea_backend.Data;
 namespace ikea_backend.Migrations
 {
     [DbContext(typeof(IkeaDbContext))]
-    [Migration("20250413234851_InitialCreate")]
+    [Migration("20250503190344_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />

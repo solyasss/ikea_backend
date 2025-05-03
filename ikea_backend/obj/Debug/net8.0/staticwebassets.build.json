@@ -1,12 +1,11 @@
 {
   "Version": 1,
-  "Hash": "q3RqOONRFtpZosltbrRKYWgFDX7MhJiWSlOq18Rm7ow=",
+  "Hash": "MpApzENc14i2sZ0rZUfrvZfvYQq5FhQymHKBeYfp8Jg=",
   "Source": "ikea_backend",
   "BasePath": "_content/ikea_backend",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
   "DiscoveryPatterns": [],
-  "Assets": [],
-  "Endpoints": []
+  "Assets": []
 }
