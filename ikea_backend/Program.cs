@@ -24,7 +24,7 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-app.UseCors(); // добавил CORS
+app.UseCors();  // добавил CORS
 
 if (app.Environment.IsDevelopment())
 {
