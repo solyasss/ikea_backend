@@ -4,8 +4,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ikea_backend", "ikea_backen
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ikea_business", "ikea_business\ikea_business.csproj", "{32319C26-63C1-42D2-8A1A-583FE955C6B8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ikea_presentation", "ikea_presentation\ikea_presentation.csproj", "{852C5C4F-3882-403B-9958-842D0F4E53E1}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ikea_data", "ikea_data\ikea_data.csproj", "{7306484C-86B2-43E1-B0F2-CF011FCCA098}"
 EndProject
 Global
@@ -22,10 +20,6 @@ Global
 		{32319C26-63C1-42D2-8A1A-583FE955C6B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{32319C26-63C1-42D2-8A1A-583FE955C6B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{32319C26-63C1-42D2-8A1A-583FE955C6B8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{852C5C4F-3882-403B-9958-842D0F4E53E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{852C5C4F-3882-403B-9958-842D0F4E53E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{852C5C4F-3882-403B-9958-842D0F4E53E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{852C5C4F-3882-403B-9958-842D0F4E53E1}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7306484C-86B2-43E1-B0F2-CF011FCCA098}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7306484C-86B2-43E1-B0F2-CF011FCCA098}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7306484C-86B2-43E1-B0F2-CF011FCCA098}.Release|Any CPU.ActiveCfg = Release|Any CPU
