@@ -1,4 +1,4 @@
-namespace ikea_backend.Helpers;
+namespace ikea_business.Helpers;
 
 public static class PasswordHasher
 {

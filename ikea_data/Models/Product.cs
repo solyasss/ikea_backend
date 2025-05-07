@@ -1,4 +1,4 @@
-namespace ikea_backend.Models;
+namespace ikea_data.Models;
 
 public class Product
 {

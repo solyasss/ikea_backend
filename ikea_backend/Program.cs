@@ -1,7 +1,7 @@
 using ikea_backend.Data;
-using ikea_backend.Models;
-using ikea_backend.DTO;
-using ikea_backend.Helpers;
+using ikea_business.DTO;
+using ikea_business.Helpers;
+using ikea_data.Models;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);

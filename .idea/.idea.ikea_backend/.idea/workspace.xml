@@ -11,12 +11,20 @@
   <component name="ChangeListManager">
     <list default="true" id="6ff53050-cde2-4ad4-ba68-a2aade37d1fd" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ikea_backend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ikea_backend/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ikea_backend.sln" beforeDir="false" afterPath="$PROJECT_DIR$/ikea_backend.sln" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ikea_backend/ikea_backend.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/ikea_backend/ikea_backend.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ikea_business/Class1.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ikea_backend/DTO/UserInput.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ikea_business/DTO/UserInput.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ikea_backend/Data/IkeaDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ikea_backend/Data/IkeaDbContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ikea_backend/Helpers/PasswordHasher.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ikea_business/Helpers/PasswordHasher.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ikea_backend/Models/Category.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ikea_data/Models/Category.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ikea_backend/Models/Product.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ikea_data/Models/Product.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ikea_backend/Models/ProductCharacteristic.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ikea_data/Models/ProductCharacteristic.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ikea_backend/Models/ProductComment.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ikea_data/Models/ProductComment.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ikea_backend/Models/ProductImage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ikea_data/Models/ProductImage.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ikea_backend/Models/Set.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ikea_data/Models/Set.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ikea_backend/Models/SetItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ikea_data/Models/SetItem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ikea_backend/Models/User.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ikea_data/Models/User.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ikea_backend/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ikea_backend/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ikea_business/ikea_business.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/ikea_business/ikea_business.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ikea_data/Class1.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ikea_presentation/Class1.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ikea_data/ikea_data.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/ikea_data/ikea_data.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ikea_presentation/ikea_presentation.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/ikea_presentation/ikea_presentation.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

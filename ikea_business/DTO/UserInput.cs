@@ -1,4 +1,4 @@
-namespace ikea_backend.DTO;
+namespace ikea_business.DTO;
 
 public record UserInput(
     bool     IsAdmin,

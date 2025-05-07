@@ -1,6 +1,5 @@
-using ikea_backend.Models;
+using ikea_data.Models;
 using Microsoft.EntityFrameworkCore;
-using ikea_backend.Helpers;
 
 namespace ikea_backend.Data;
 
