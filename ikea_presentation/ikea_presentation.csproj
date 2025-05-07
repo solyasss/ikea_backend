@@ -6,4 +6,8 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\ikea_business\ikea_business.csproj" />
+    </ItemGroup>
+
 </Project>

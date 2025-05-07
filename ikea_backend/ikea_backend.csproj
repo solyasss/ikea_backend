@@ -24,4 +24,8 @@
       <Folder Include="Controllers\" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\ikea_presentation\ikea_presentation.csproj" />
+    </ItemGroup>
+
 </Project>
