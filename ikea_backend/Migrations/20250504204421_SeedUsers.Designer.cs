@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ikea_backend.Data;
 
@@ -11,9 +12,11 @@ using ikea_backend.Data;
 namespace ikea_backend.Migrations
 {
     [DbContext(typeof(IkeaDbContext))]
-    partial class IkeaDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250504204421_SeedUsers")]
+    partial class SeedUsers
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
