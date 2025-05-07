@@ -15,6 +15,7 @@ public class IkeaDbContext : DbContext
     public DbSet<Set> Sets                       => Set<Set>();
     public DbSet<SetItem> SetItems               => Set<SetItem>();
     public DbSet<User> Users                     => Set<User>();   
+    public DbSet<NewArrival> NewArrivals => Set<NewArrival>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -115,6 +116,15 @@ public class IkeaDbContext : DbContext
             new SetItem { Id = 5, SetId = 3, ProductId = 1, Quantity = 1 }
         );
         
+        modelBuilder.Entity<NewArrival>().HasData(
+            new NewArrival { Id = 1, ImageUrl = "/img/new_options_products/set-1.png",
+                Text = "Sofa" },
+            new NewArrival { Id = 2, ImageUrl = "/img/new_options_products/set-2.png",
+                Text = "Decoration" },
+            new NewArrival { Id = 3, ImageUrl = "/img/new_options_products/set-3.png",
+                Text = "Pillow" }
+        );
+        
         modelBuilder.Entity<User>().HasData(
     new User {
         Id = 1,
@@ -181,6 +191,8 @@ public class IkeaDbContext : DbContext
         PasswordHash = Convert.FromBase64String("93gPQJ5vdJh0MoUIITjOtOIFuj2/VtUb8sbYZB5aFVvBzN6wWaHJkjbVz7mU3tdMjboYoRmnX+jC4Knd0ek6MA=="),
         PasswordSalt = Convert.FromBase64String("fXmn3ftk8xPBI/BVsnMQpgPlRwISl0gDhYBtXmbUoI0pCzETD1ZrsA==")
     }
+    
+    
 );
 
     }
