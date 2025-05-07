@@ -11,8 +11,8 @@
   <component name="ChangeListManager">
     <list default="true" id="6ff53050-cde2-4ad4-ba68-a2aade37d1fd" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ikea_backend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ikea_backend/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ikea_backend.sln" beforeDir="false" afterPath="$PROJECT_DIR$/ikea_backend.sln" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ikea_backend/ikea_backend.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/ikea_backend/ikea_backend.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ikea_business/DTO/NewArrivalInput.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ikea_business/DTO/NewArrivalInput.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ikea_data/Models/NewArrival.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ikea_data/Models/NewArrival.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,6 +72,11 @@
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable",
     "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
+      "C#"
+    ]
   }
 }]]></component>
   <component name="RunManager" selected=".NET Launch Settings Profile.ikea_backend: http">
@@ -156,24 +161,5 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/ikea_backend/Program.cs</url>
-          <line>164</line>
-          <properties documentPath="D:\Desktop\test\ikea_backend\Program.cs" containingFunctionPresentation="">
-            <startOffsets>
-              <option value="4390" />
-            </startOffsets>
-            <endOffsets>
-              <option value="4416" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
