@@ -12,8 +12,8 @@ using ikea_backend.Data;
 namespace ikea_backend.Migrations
 {
     [DbContext(typeof(IkeaDbContext))]
-    [Migration("20250504204421_SeedUsers")]
-    partial class SeedUsers
+    [Migration("20250508185431_SeedUsersAndNewArrivals")]
+    partial class SeedUsersAndNewArrivals
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -25,7 +25,7 @@ namespace ikea_backend.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("ikea_backend.Models.Category", b =>
+            modelBuilder.Entity("ikea_data.Models.Category", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -90,6 +90,167 @@ namespace ikea_backend.Migrations
                         },
                         new
                         {
+                            Id = 7,
+                            ParentId = 1,
+                            Slug = "armchairs",
+                            Title = "Кресла"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            ParentId = 1,
+                            Slug = "coffee-tables",
+                            Title = "Журнальные столики"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            ParentId = 1,
+                            Slug = "wardrobes-and-shelves",
+                            Title = "Шкафы и полки"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            ParentId = 1,
+                            Slug = "tv-stands",
+                            Title = "Стеллажи для ТВ"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            ParentId = 1,
+                            Slug = "carpets",
+                            Title = "Ковры"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            ParentId = 1,
+                            Slug = "lighting",
+                            Title = "Освещение"
+                        },
+                        new
+                        {
+                            Id = 13,
+                            ParentId = 1,
+                            Slug = "decor",
+                            Title = "Декор"
+                        },
+                        new
+                        {
+                            Id = 14,
+                            ParentId = 1,
+                            Slug = "storage",
+                            Title = "Системы хранения"
+                        },
+                        new
+                        {
+                            Id = 15,
+                            ParentId = 2,
+                            Slug = "beds",
+                            Title = "Кровати"
+                        },
+                        new
+                        {
+                            Id = 16,
+                            ParentId = 2,
+                            Slug = "mattresses",
+                            Title = "Матрасы"
+                        },
+                        new
+                        {
+                            Id = 17,
+                            ParentId = 2,
+                            Slug = "closets",
+                            Title = "Шкафы"
+                        },
+                        new
+                        {
+                            Id = 18,
+                            ParentId = 3,
+                            Slug = "dining-tables",
+                            Title = "Обеденные столы"
+                        },
+                        new
+                        {
+                            Id = 19,
+                            ParentId = 3,
+                            Slug = "chairs",
+                            Title = "Стулья"
+                        },
+                        new
+                        {
+                            Id = 20,
+                            ParentId = 3,
+                            Slug = "bar-stools",
+                            Title = "Барные стулья"
+                        },
+                        new
+                        {
+                            Id = 21,
+                            ParentId = 3,
+                            Slug = "dishes",
+                            Title = "Посуда"
+                        },
+                        new
+                        {
+                            Id = 22,
+                            ParentId = 3,
+                            Slug = "table-setting",
+                            Title = "Сервировка стола"
+                        },
+                        new
+                        {
+                            Id = 23,
+                            ParentId = 3,
+                            Slug = "cutlery",
+                            Title = "Столовые приборы"
+                        },
+                        new
+                        {
+                            Id = 24,
+                            ParentId = 4,
+                            Slug = "shelves-and-cabinets",
+                            Title = "Полки и шкафчики"
+                        },
+                        new
+                        {
+                            Id = 25,
+                            ParentId = 4,
+                            Slug = "towels",
+                            Title = "Полотенца"
+                        },
+                        new
+                        {
+                            Id = 26,
+                            ParentId = 4,
+                            Slug = "shower-curtains",
+                            Title = "Шторки для душа"
+                        },
+                        new
+                        {
+                            Id = 27,
+                            ParentId = 5,
+                            Slug = "desks",
+                            Title = "Письменные столы"
+                        },
+                        new
+                        {
+                            Id = 28,
+                            ParentId = 5,
+                            Slug = "office-chairs",
+                            Title = "Офисные кресла"
+                        },
+                        new
+                        {
+                            Id = 29,
+                            ParentId = 5,
+                            Slug = "bookshelves",
+                            Title = "Книжные шкафы"
+                        },
+                        new
+                        {
                             Id = 30,
                             ParentId = 5,
                             Slug = "desk-lamps",
@@ -97,7 +258,48 @@ namespace ikea_backend.Migrations
                         });
                 });
 
-            modelBuilder.Entity("ikea_backend.Models.Product", b =>
+            modelBuilder.Entity("ikea_data.Models.NewArrival", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Text")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("NewArrivals");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            ImageUrl = "/img/new_options_products/set-1.png",
+                            Text = "Sofa"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            ImageUrl = "/img/new_options_products/set-2.png",
+                            Text = "Decoration"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            ImageUrl = "/img/new_options_products/set-3.png",
+                            Text = "Pillow"
+                        });
+                });
+
+            modelBuilder.Entity("ikea_data.Models.Product", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -158,7 +360,7 @@ namespace ikea_backend.Migrations
                         });
                 });
 
-            modelBuilder.Entity("ikea_backend.Models.ProductCharacteristic", b =>
+            modelBuilder.Entity("ikea_data.Models.ProductCharacteristic", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -207,7 +409,7 @@ namespace ikea_backend.Migrations
                         });
                 });
 
-            modelBuilder.Entity("ikea_backend.Models.ProductComment", b =>
+            modelBuilder.Entity("ikea_data.Models.ProductComment", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -253,7 +455,7 @@ namespace ikea_backend.Migrations
                         });
                 });
 
-            modelBuilder.Entity("ikea_backend.Models.ProductImage", b =>
+            modelBuilder.Entity("ikea_data.Models.ProductImage", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -301,7 +503,7 @@ namespace ikea_backend.Migrations
                         });
                 });
 
-            modelBuilder.Entity("ikea_backend.Models.Set", b =>
+            modelBuilder.Entity("ikea_data.Models.Set", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -347,7 +549,7 @@ namespace ikea_backend.Migrations
                         });
                 });
 
-            modelBuilder.Entity("ikea_backend.Models.SetItem", b =>
+            modelBuilder.Entity("ikea_data.Models.SetItem", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -410,7 +612,7 @@ namespace ikea_backend.Migrations
                         });
                 });
 
-            modelBuilder.Entity("ikea_backend.Models.User", b =>
+            modelBuilder.Entity("ikea_data.Models.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -533,9 +735,9 @@ namespace ikea_backend.Migrations
                         });
                 });
 
-            modelBuilder.Entity("ikea_backend.Models.Category", b =>
+            modelBuilder.Entity("ikea_data.Models.Category", b =>
                 {
-                    b.HasOne("ikea_backend.Models.Category", "Parent")
+                    b.HasOne("ikea_data.Models.Category", "Parent")
                         .WithMany("Children")
                         .HasForeignKey("ParentId")
                         .OnDelete(DeleteBehavior.NoAction);
@@ -543,9 +745,9 @@ namespace ikea_backend.Migrations
                     b.Navigation("Parent");
                 });
 
-            modelBuilder.Entity("ikea_backend.Models.Product", b =>
+            modelBuilder.Entity("ikea_data.Models.Product", b =>
                 {
-                    b.HasOne("ikea_backend.Models.Category", "Category")
+                    b.HasOne("ikea_data.Models.Category", "Category")
                         .WithMany()
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -554,9 +756,9 @@ namespace ikea_backend.Migrations
                     b.Navigation("Category");
                 });
 
-            modelBuilder.Entity("ikea_backend.Models.ProductCharacteristic", b =>
+            modelBuilder.Entity("ikea_data.Models.ProductCharacteristic", b =>
                 {
-                    b.HasOne("ikea_backend.Models.Product", "Product")
+                    b.HasOne("ikea_data.Models.Product", "Product")
                         .WithMany()
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -565,9 +767,9 @@ namespace ikea_backend.Migrations
                     b.Navigation("Product");
                 });
 
-            modelBuilder.Entity("ikea_backend.Models.ProductComment", b =>
+            modelBuilder.Entity("ikea_data.Models.ProductComment", b =>
                 {
-                    b.HasOne("ikea_backend.Models.Product", "Product")
+                    b.HasOne("ikea_data.Models.Product", "Product")
                         .WithMany()
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -576,9 +778,9 @@ namespace ikea_backend.Migrations
                     b.Navigation("Product");
                 });
 
-            modelBuilder.Entity("ikea_backend.Models.ProductImage", b =>
+            modelBuilder.Entity("ikea_data.Models.ProductImage", b =>
                 {
-                    b.HasOne("ikea_backend.Models.Product", "Product")
+                    b.HasOne("ikea_data.Models.Product", "Product")
                         .WithMany()
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -587,15 +789,15 @@ namespace ikea_backend.Migrations
                     b.Navigation("Product");
                 });
 
-            modelBuilder.Entity("ikea_backend.Models.SetItem", b =>
+            modelBuilder.Entity("ikea_data.Models.SetItem", b =>
                 {
-                    b.HasOne("ikea_backend.Models.Product", "Product")
+                    b.HasOne("ikea_data.Models.Product", "Product")
                         .WithMany()
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ikea_backend.Models.Set", "Set")
+                    b.HasOne("ikea_data.Models.Set", "Set")
                         .WithMany()
                         .HasForeignKey("SetId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -606,7 +808,7 @@ namespace ikea_backend.Migrations
                     b.Navigation("Set");
                 });
 
-            modelBuilder.Entity("ikea_backend.Models.Category", b =>
+            modelBuilder.Entity("ikea_data.Models.Category", b =>
                 {
                     b.Navigation("Children");
                 });

@@ -10,11 +10,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6ff53050-cde2-4ad4-ba68-a2aade37d1fd" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.ikea_backend/.idea/.name" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ikea_backend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ikea_backend/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ikea_backend/Data/IkeaDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ikea_backend/Data/IkeaDbContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ikea_backend/Migrations/IkeaDbContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ikea_backend/Migrations/IkeaDbContextModelSnapshot.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ikea_backend/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ikea_backend/appsettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ikea_backend/Migrations/20250504204421_SeedUsers.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ikea_backend/Migrations/20250504204421_SeedUsers.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ikea_backend/Migrations/20250507194107_AddNewArrivals.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ikea_backend/Migrations/20250507194107_AddNewArrivals.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ikea_backend/Migrations/20250508182934_RestoreCategories.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ikea_backend/Migrations/20250508182934_RestoreCategories.cs" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,7 +24,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="DpaMonitoringSettings">
-    <option name="autoShow" value="false" />
+    <option name="firstShow" value="false" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -147,7 +149,7 @@
       <workItem from="1744581782778" duration="11000" />
       <workItem from="1744581862384" duration="7853000" />
       <workItem from="1744590554371" duration="816000" />
-      <workItem from="1746728674827" duration="315000" />
+      <workItem from="1746728674827" duration="1950000" />
     </task>
     <servers />
   </component>
@@ -161,6 +163,17 @@
     <option featureType="dependencySupport" implementationName="dotnet:Microsoft.EntityFrameworkCore.Abstractions" />
     <option featureType="dependencySupport" implementationName="dotnet:Microsoft.EntityFrameworkCore.Relational" />
     <option featureType="dependencySupport" implementationName="dotnet:Microsoft.EntityFrameworkCore" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
