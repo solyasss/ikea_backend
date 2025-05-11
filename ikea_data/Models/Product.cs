@@ -9,4 +9,6 @@ public class Product
     public decimal Price { get; set; }
     public string? MainImage { get; set; }
     public Category? Category { get; set; }
+ 
 }
+

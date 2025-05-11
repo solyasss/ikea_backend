@@ -26,13 +26,33 @@ namespace ikea_backend.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Product>> Get(int id)
         {
-            var products = await _db.Products.SingleOrDefaultAsync(p => p.Id == id);
-            if (products == null)
-            {
+            var product = await _db.Products
+                .Where(p => p.Id == id)
+                .Select(p => new
+                {
+                    Product = p,
+                    Category = p.Category,
+                    ProductCharacteristics = _db.ProductCharacteristics.Where(pc => pc.ProductId == p.Id).ToList(),
+                    ProductComments = _db.ProductComments.Where(pc => pc.ProductId == p.Id).ToList(),
+                    ProductImages = _db.ProductImages.Where(pi => pi.ProductId == p.Id).ToList(),
+                    SetItems = _db.SetItems.Where(si => si.ProductId == p.Id).ToList()
+                })
+                .FirstOrDefaultAsync();
+
+            if (product == null)
                 return NotFound();
-            }
-            return new ObjectResult(products);
+
+            return Ok(new
+            {
+                product.Product,
+                product.Category,
+                product.ProductCharacteristics,
+                product.ProductComments,
+                product.ProductImages,
+                product.SetItems
+            });
         }
+
 
         [HttpPut("{id:int}")]
         public async Task<IActionResult> Update(int id, Product input)
@@ -75,4 +95,6 @@ namespace ikea_backend.Controllers
             return Ok(product);
         }
     }
+
+
 }
