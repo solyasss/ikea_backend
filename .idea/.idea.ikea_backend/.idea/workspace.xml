@@ -35,12 +35,12 @@
     &quot;assignee&quot;: &quot;arotar055&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "git@github.com:solyasss/ikea_backend.git",
-    "accountId": "cb8bcd66-47e7-4e80-949b-efd93a996ce6"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;git@github.com:solyasss/ikea_backend.git&quot;,
+    &quot;accountId&quot;: &quot;cb8bcd66-47e7-4e80-949b-efd93a996ce6&quot;
   }
-}]]></component>
+}</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/ikea_business/Class1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ikea_data/Class1.cs" root0="SKIP_HIGHLIGHTING" />
