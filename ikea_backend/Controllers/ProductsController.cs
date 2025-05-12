@@ -1,4 +1,4 @@
-﻿using ikea_backend.Data;
+﻿using ikea_data.Data;
 using ikea_data.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
