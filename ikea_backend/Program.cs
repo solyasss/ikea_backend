@@ -1,6 +1,6 @@
-using ikea_backend.Data;
 using ikea_business.DTO;
 using ikea_business.Helpers;
+using ikea_data.Data;
 using ikea_data.Models;
 using Microsoft.EntityFrameworkCore;
 

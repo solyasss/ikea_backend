@@ -1,5 +1,5 @@
-using ikea_backend.Data;
 using ikea_business.DTO;
+using ikea_data.Data;
 using ikea_data.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
