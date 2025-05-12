@@ -9,7 +9,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ff53050-cde2-4ad4-ba68-a2aade37d1fd" name="Changes" comment="" />
+    <list default="true" id="6ff53050-cde2-4ad4-ba68-a2aade37d1fd" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.ikea_backend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ikea_backend/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ikea_backend/bin/Debug/net8.0/ikea_backend.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ikea_backend/bin/Debug/net8.0/ikea_backend.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ikea_backend/bin/Debug/net8.0/ikea_backend.exe" beforeDir="false" afterPath="$PROJECT_DIR$/ikea_backend/bin/Debug/net8.0/ikea_backend.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ikea_backend/obj/Debug/net8.0/ikea_backend.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ikea_backend/obj/Debug/net8.0/ikea_backend.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ikea_backend/obj/Debug/net8.0/ikea_backend.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/ikea_backend/obj/Debug/net8.0/ikea_backend.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ikea_backend/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/ikea_backend/obj/rider.project.model.nuget.info" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -19,6 +26,11 @@
     <option name="firstShow" value="false" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -50,7 +62,7 @@
     &quot;.NET Launch Settings Profile.ikea_backend: IIS Express.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;arotar-init-create&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;arotar-api&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -106,6 +118,11 @@
         <option name="Build" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue=".NET Launch Settings Profile.ikea_backend: http" />
+      <item itemvalue=".NET Launch Settings Profile.ikea_backend: https" />
+      <item itemvalue=".NET Launch Settings Profile.ikea_backend: IIS Express" />
+    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">

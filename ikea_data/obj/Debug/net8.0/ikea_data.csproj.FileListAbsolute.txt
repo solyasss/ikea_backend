@@ -1,0 +1,12 @@
+E:\prog\Back\ikea_backend\ikea_data\bin\Debug\net8.0\ikea_data.deps.json
+E:\prog\Back\ikea_backend\ikea_data\bin\Debug\net8.0\ikea_data.dll
+E:\prog\Back\ikea_backend\ikea_data\bin\Debug\net8.0\ikea_data.pdb
+E:\prog\Back\ikea_backend\ikea_data\obj\Debug\net8.0\ikea_data.GeneratedMSBuildEditorConfig.editorconfig
+E:\prog\Back\ikea_backend\ikea_data\obj\Debug\net8.0\ikea_data.AssemblyInfoInputs.cache
+E:\prog\Back\ikea_backend\ikea_data\obj\Debug\net8.0\ikea_data.AssemblyInfo.cs
+E:\prog\Back\ikea_backend\ikea_data\obj\Debug\net8.0\ikea_data.csproj.CoreCompileInputs.cache
+E:\prog\Back\ikea_backend\ikea_data\obj\Debug\net8.0\ikea_data.sourcelink.json
+E:\prog\Back\ikea_backend\ikea_data\obj\Debug\net8.0\ikea_data.dll
+E:\prog\Back\ikea_backend\ikea_data\obj\Debug\net8.0\refint\ikea_data.dll
+E:\prog\Back\ikea_backend\ikea_data\obj\Debug\net8.0\ikea_data.pdb
+E:\prog\Back\ikea_backend\ikea_data\obj\Debug\net8.0\ref\ikea_data.dll

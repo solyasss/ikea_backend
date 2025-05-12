@@ -1,0 +1,16 @@
+E:\prog\Back\ikea_backend\ikea_business\bin\Debug\net8.0\ikea_business.deps.json
+E:\prog\Back\ikea_backend\ikea_business\bin\Debug\net8.0\ikea_business.dll
+E:\prog\Back\ikea_backend\ikea_business\bin\Debug\net8.0\ikea_business.pdb
+E:\prog\Back\ikea_backend\ikea_business\bin\Debug\net8.0\ikea_data.dll
+E:\prog\Back\ikea_backend\ikea_business\bin\Debug\net8.0\ikea_data.pdb
+E:\prog\Back\ikea_backend\ikea_business\obj\Debug\net8.0\ikea_business.csproj.AssemblyReference.cache
+E:\prog\Back\ikea_backend\ikea_business\obj\Debug\net8.0\ikea_business.GeneratedMSBuildEditorConfig.editorconfig
+E:\prog\Back\ikea_backend\ikea_business\obj\Debug\net8.0\ikea_business.AssemblyInfoInputs.cache
+E:\prog\Back\ikea_backend\ikea_business\obj\Debug\net8.0\ikea_business.AssemblyInfo.cs
+E:\prog\Back\ikea_backend\ikea_business\obj\Debug\net8.0\ikea_business.csproj.CoreCompileInputs.cache
+E:\prog\Back\ikea_backend\ikea_business\obj\Debug\net8.0\ikea_business.sourcelink.json
+E:\prog\Back\ikea_backend\ikea_business\obj\Debug\net8.0\ikea_bus.86DA39B7.Up2Date
+E:\prog\Back\ikea_backend\ikea_business\obj\Debug\net8.0\ikea_business.dll
+E:\prog\Back\ikea_backend\ikea_business\obj\Debug\net8.0\refint\ikea_business.dll
+E:\prog\Back\ikea_backend\ikea_business\obj\Debug\net8.0\ikea_business.pdb
+E:\prog\Back\ikea_backend\ikea_business\obj\Debug\net8.0\ref\ikea_business.dll

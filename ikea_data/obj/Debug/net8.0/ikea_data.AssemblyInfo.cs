@@ -10,12 +10,12 @@
 using System;
 using System.Reflection;
 
-[assembly: System.Reflection.AssemblyCompanyAttribute("ikea_backend")]
+[assembly: System.Reflection.AssemblyCompanyAttribute("ikea_data")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ca35766b8c93d0f8b3b8d141b2c20b666cfc6d50")]
-[assembly: System.Reflection.AssemblyProductAttribute("ikea_backend")]
-[assembly: System.Reflection.AssemblyTitleAttribute("ikea_backend")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+21f975773e2ff478f3aa89b9bae335d31615190a")]
+[assembly: System.Reflection.AssemblyProductAttribute("ikea_data")]
+[assembly: System.Reflection.AssemblyTitleAttribute("ikea_data")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
 
 // Создано классом WriteCodeFragment MSBuild.
