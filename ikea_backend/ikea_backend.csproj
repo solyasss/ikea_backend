@@ -27,11 +27,6 @@
 
 
     <ItemGroup>
-      <Folder Include="Data\" />
-    </ItemGroup>
-
-
-    <ItemGroup>
       <Content Update="appsettings.json">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
