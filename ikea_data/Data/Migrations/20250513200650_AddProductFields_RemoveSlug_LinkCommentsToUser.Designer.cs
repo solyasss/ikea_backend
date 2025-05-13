@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ikea_data.Data;
 
@@ -11,9 +12,11 @@ using ikea_data.Data;
 namespace ikea_data.Data.Migrations
 {
     [DbContext(typeof(IkeaDbContext))]
-    partial class IkeaDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250513200650_AddProductFields_RemoveSlug_LinkCommentsToUser")]
+    partial class AddProductFields_RemoveSlug_LinkCommentsToUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -334,12 +337,10 @@ namespace ikea_data.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("Price")
-                        .HasPrecision(10, 2)
-                        .HasColumnType("decimal(10,2)");
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<decimal?>("Rating")
-                        .HasPrecision(3, 2)
-                        .HasColumnType("decimal(3,2)");
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("Type")
                         .HasColumnType("nvarchar(max)");
@@ -348,8 +349,7 @@ namespace ikea_data.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal?>("Weight")
-                        .HasPrecision(8, 2)
-                        .HasColumnType("decimal(8,2)");
+                        .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
 
@@ -363,54 +363,27 @@ namespace ikea_data.Data.Migrations
                             Id = 1,
                             Article = "CHAIR-001",
                             CategoryId = 19,
-                            Color = "Brown",
-                            CountryOfOrigin = "Poland",
-                            Dimensions = "60x60x90",
                             MainImage = "/src/assets/img/products/product-1.png",
-                            Materials = "Wood, Textile",
-                            Name = "Comfort Chair",
-                            PackageContents = "1x Chair, Instructions",
-                            Price = 59.99m,
-                            Rating = 4.5m,
-                            Type = "Armchair",
-                            Warranty = "2 years",
-                            Weight = 7.5m
+                            Name = "Chair",
+                            Price = 59.99m
                         },
                         new
                         {
                             Id = 2,
                             Article = "LAMP-002",
                             CategoryId = 12,
-                            Color = "White",
-                            CountryOfOrigin = "Germany",
-                            Dimensions = "15x15x45",
                             MainImage = "/src/assets/img/products/product-2.png",
-                            Materials = "Plastic, Metal",
-                            Name = "Minimalist Lamp",
-                            PackageContents = "1x Lamp, Bulb included",
-                            Price = 19.99m,
-                            Rating = 4.0m,
-                            Type = "Desk Lamp",
-                            Warranty = "1 year",
-                            Weight = 1.2m
+                            Name = "Lamp",
+                            Price = 19.99m
                         },
                         new
                         {
                             Id = 3,
                             Article = "LAMP-003",
                             CategoryId = 12,
-                            Color = "Black",
-                            CountryOfOrigin = "Italy",
-                            Dimensions = "18x18x50",
                             MainImage = "/src/assets/img/products/product-3.png",
-                            Materials = "Metal, Glass",
-                            Name = "Vintage Lamp",
-                            PackageContents = "1x Lamp",
-                            Price = 19.99m,
-                            Rating = 3.8m,
-                            Type = "Floor Lamp",
-                            Warranty = "1 year",
-                            Weight = 1.5m
+                            Name = "Lamp",
+                            Price = 19.99m
                         });
                 });
 

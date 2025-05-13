@@ -24,6 +24,14 @@ namespace ikea_data.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+            
+            // ----- конфигурация decimal -----
+            modelBuilder.Entity<Product>(e =>
+            {
+                e.Property(p => p.Price)   .HasPrecision(10, 2); // до  99 999 999.99
+                e.Property(p => p.Weight)  .HasPrecision(8, 2);  // до      999  .99
+                e.Property(p => p.Rating)  .HasPrecision(3, 2);  // 0.00–9.99 (достаточно)
+            });
 
             // ---------- связи ----------
             modelBuilder.Entity<Category>()
@@ -38,23 +46,28 @@ namespace ikea_data.Data
                 .HasForeignKey(p => p.CategoryId)
                 .OnDelete(DeleteBehavior.Cascade);
 
+            modelBuilder.Entity<ProductImage>()
+                .HasOne(pi => pi.Product)
+                .WithMany(p => p.Images)
+                .HasForeignKey(pi => pi.ProductId)
+                .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<ProductCharacteristic>()
                 .HasOne(pc => pc.Product)
-                .WithMany()
+                .WithMany(p => p.Characteristics)
                 .HasForeignKey(pc => pc.ProductId)
-                .OnDelete(DeleteBehavior.Cascade);
-
-            modelBuilder.Entity<ProductImage>()
-                .HasOne(pi => pi.Product)
-                .WithMany()
-                .HasForeignKey(pi => pi.ProductId)
                 .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<ProductComment>()
                 .HasOne(pc => pc.Product)
-                .WithMany()
+                .WithMany(p => p.Comments)
                 .HasForeignKey(pc => pc.ProductId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<ProductComment>()
+                .HasOne(pc => pc.User)
+                .WithMany()
+                .HasForeignKey(pc => pc.UserId)
                 .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<SetItem>()
@@ -107,20 +120,60 @@ namespace ikea_data.Data
             modelBuilder.Entity<Product>().HasData(
                 new Product
                 {
-                    Id = 1, CategoryId = 19, Name = "Chair", Slug = "chair-1", Price = 59.99m,
-                    MainImage = "/src/assets/img/products/product-1.png"
+                    Id = 1,
+                    Article = "CHAIR-001",
+                    CategoryId = 19,
+                    Name = "Comfort Chair",
+                    Price = 59.99m,
+                    MainImage = "/src/assets/img/products/product-1.png",
+                    Color = "Brown",
+                    Dimensions = "60x60x90",
+                    Weight = 7.5m,
+                    Type = "Armchair",
+                    CountryOfOrigin = "Poland",
+                    PackageContents = "1x Chair, Instructions",
+                    Warranty = "2 years",
+                    Materials = "Wood, Textile",
+                    Rating = 4.5m
                 },
                 new Product
                 {
-                    Id = 2, CategoryId = 12, Name = "Lamp", Slug = "lamp-2", Price = 19.99m,
-                    MainImage = "/src/assets/img/products/product-2.png"
+                    Id = 2,
+                    Article = "LAMP-002",
+                    CategoryId = 12,
+                    Name = "Minimalist Lamp",
+                    Price = 19.99m,
+                    MainImage = "/src/assets/img/products/product-2.png",
+                    Color = "White",
+                    Dimensions = "15x15x45",
+                    Weight = 1.2m,
+                    Type = "Desk Lamp",
+                    CountryOfOrigin = "Germany",
+                    PackageContents = "1x Lamp, Bulb included",
+                    Warranty = "1 year",
+                    Materials = "Plastic, Metal",
+                    Rating = 4.0m
                 },
                 new Product
                 {
-                    Id = 3, CategoryId = 12, Name = "Lamp", Slug = "lamp-3", Price = 19.99m,
-                    MainImage = "/src/assets/img/products/product-3.png"
+                    Id = 3,
+                    Article = "LAMP-003",
+                    CategoryId = 12,
+                    Name = "Vintage Lamp",
+                    Price = 19.99m,
+                    MainImage = "/src/assets/img/products/product-3.png",
+                    Color = "Black",
+                    Dimensions = "18x18x50",
+                    Weight = 1.5m,
+                    Type = "Floor Lamp",
+                    CountryOfOrigin = "Italy",
+                    PackageContents = "1x Lamp",
+                    Warranty = "1 year",
+                    Materials = "Metal, Glass",
+                    Rating = 3.8m
                 }
             );
+
 
             modelBuilder.Entity<ProductImage>().HasData(
                 new ProductImage
@@ -133,9 +186,21 @@ namespace ikea_data.Data
 
             modelBuilder.Entity<ProductComment>().HasData(
                 new ProductComment
-                    { Id = 1, ProductId = 1, UserName = "User1", CommentText = "Nice chair", Rating = 5 },
+                {
+                    Id = 1,
+                    ProductId = 1,
+                    UserId = 2, // Bob
+                    CommentText = "Nice chair",
+                    Rating = 5
+                },
                 new ProductComment
-                    { Id = 2, ProductId = 2, UserName = "User2", CommentText = "Bright lamp", Rating = 4 }
+                {
+                    Id = 2,
+                    ProductId = 2,
+                    UserId = 3, // Charlie
+                    CommentText = "Bright lamp",
+                    Rating = 4
+                }
             );
 
             modelBuilder.Entity<ProductCharacteristic>().HasData(
@@ -272,7 +337,7 @@ namespace ikea_data.Data
             );
         }
     }
-    
+
     public class SampleContextFactory : IDesignTimeDbContextFactory<IkeaDbContext>
     {
         public IkeaDbContext CreateDbContext(string[] args)
