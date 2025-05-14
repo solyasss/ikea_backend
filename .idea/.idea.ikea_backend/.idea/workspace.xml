@@ -10,15 +10,46 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6ff53050-cde2-4ad4-ba68-a2aade37d1fd" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/ikea_business/DTO/ProductInput.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ikea_business/Mapping/MappingProfile.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ikea_business/Services/Implementations/CategoryService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ikea_business/Services/Implementations/NewArrivalService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ikea_business/Services/Implementations/ProductService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ikea_business/Services/Implementations/UserService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ikea_business/Services/Interfaces/ICategoryService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ikea_business/Services/Interfaces/INewArrivalService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ikea_business/Services/Interfaces/IProductService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ikea_business/Services/Interfaces/IUserService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ikea_business/Validation/NewArrivalInputValidator.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ikea_business/Validation/ProductInputValidator.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ikea_business/Validation/UserInputValidator.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ikea_data/Repositories/Implementations/CategoryRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ikea_data/Repositories/Implementations/GenericRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ikea_data/Repositories/Implementations/NewArrivalRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ikea_data/Repositories/Implementations/ProductCharacteristicRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ikea_data/Repositories/Implementations/ProductCommentRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ikea_data/Repositories/Implementations/ProductImageRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ikea_data/Repositories/Implementations/ProductRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ikea_data/Repositories/Implementations/SetRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ikea_data/Repositories/Implementations/UserRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ikea_data/Repositories/Interfaces/ICategoryRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ikea_data/Repositories/Interfaces/IGenericRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ikea_data/Repositories/Interfaces/INewArrivalRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ikea_data/Repositories/Interfaces/IProductCharacteristicRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ikea_data/Repositories/Interfaces/IProductCommentRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ikea_data/Repositories/Interfaces/IProductImageRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ikea_data/Repositories/Interfaces/IProductRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ikea_data/Repositories/Interfaces/ISetRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ikea_data/Repositories/Interfaces/IUserRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ikea_data/Repositories/UnitOfWork/IUnitOfWork.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ikea_data/Repositories/UnitOfWork/UnitOfWork.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ikea_backend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ikea_backend/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ikea_backend/Controllers/CategoriesController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ikea_backend/Controllers/CategoriesController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ikea_backend/Controllers/NewArrivalsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ikea_backend/Controllers/NewArrivalsController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ikea_backend/Controllers/ProductsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ikea_backend/Controllers/ProductsController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ikea_backend/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ikea_backend/appsettings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ikea_backend/ikea_backend.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/ikea_backend/ikea_backend.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ikea_data/Data/IkeaDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ikea_data/Data/IkeaDbContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ikea_data/Data/Migrations/IkeaDbContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ikea_data/Data/Migrations/IkeaDbContextModelSnapshot.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ikea_data/Models/Product.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ikea_data/Models/Product.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ikea_data/Models/ProductComment.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ikea_data/Models/ProductComment.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ikea_backend/Controllers/UsersController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ikea_backend/Controllers/UsersController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ikea_backend/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ikea_backend/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ikea_business/ikea_business.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/ikea_business/ikea_business.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ikea_data/ikea_data.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/ikea_data/ikea_data.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -154,7 +185,8 @@
       <workItem from="1746728674827" duration="1950000" />
       <workItem from="1747074645372" duration="394000" />
       <workItem from="1747077079706" duration="4012000" />
-      <workItem from="1747159314126" duration="8899000" />
+      <workItem from="1747159314126" duration="9662000" />
+      <workItem from="1747230794976" duration="21438000" />
     </task>
     <servers />
   </component>

@@ -13,6 +13,7 @@ namespace ikea_business.DTO
         string?  CountryOfOrigin,
         string?  PackageContents,
         string?  Warranty,
-        string?  Materials
+        string?  Materials,
+        decimal? Rating 
     );
 }
