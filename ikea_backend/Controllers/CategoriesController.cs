@@ -1,73 +1,37 @@
-using ikea_data.Data;
+using ikea_business.Services.Interfaces;
 using ikea_data.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
-namespace ikea_backend.Controllers;
-
-[ApiController]
-[Route("api/categories")]
-public class CategoriesController : ControllerBase
+namespace ikea_backend.Controllers
 {
-    private readonly IkeaDbContext _db;
-
-    public CategoriesController(IkeaDbContext db) => _db = db;
-
-    [HttpGet]
-    public async Task<IActionResult> GetAll()
+    [ApiController]
+    [Route("api/categories")]
+    public class CategoriesController : ControllerBase
     {
-        var list = await _db.Categories
-            .Include(c => c.Children)
-            .Where(c => c.ParentId == null)
-            .Select(c => new
-            {
-                c.Id, c.ParentId, c.Title, c.Slug,
-                Children = c.Children.Select(sc => new { sc.Id, sc.ParentId, sc.Title, sc.Slug })
-            })
-            .ToListAsync();
+        private readonly ICategoryService _svc;
+        public CategoriesController(ICategoryService svc) => _svc = svc;
 
-        return Ok(list);
-    }
+        [HttpGet]
+        public async Task<IActionResult> GetAll() =>
+            Ok(await _svc.GetTreeAsync());
 
-    [HttpGet("{id:int}")]
-    public async Task<IActionResult> Get(int id)
-    {
-        var cat = await _db.Categories.Include(c => c.Children).FirstOrDefaultAsync(c => c.Id == id);
-        if (cat == null) return NotFound();
-        return Ok(new
+        [HttpGet("{id:int}")]
+        public async Task<IActionResult> Get(int id) =>
+            await _svc.GetAsync(id) is { } c ? Ok(c) : NotFound();
+
+        [HttpPost]
+        public async Task<IActionResult> Create(Category input)
         {
-            cat.Id, cat.ParentId, cat.Title, cat.Slug,
-            Children = cat.Children.Select(sc => new { sc.Id, sc.ParentId, sc.Title, sc.Slug })
-        });
-    }
+            var id = await _svc.CreateAsync(input);
+            return CreatedAtAction(nameof(Get), new { id }, new { id });
+        }
 
-    [HttpPost]
-    public async Task<IActionResult> Create(Category input)
-    {
-        _db.Categories.Add(input);
-        await _db.SaveChangesAsync();
-        return CreatedAtAction(nameof(Get), new { id = input.Id }, input);
-    }
+        [HttpPut("{id:int}")]
+        public async Task<IActionResult> Update(int id, Category input) =>
+            await _svc.UpdateAsync(id, input) ? Ok(new { id }) : NotFound();
 
-    [HttpPut("{id:int}")]
-    public async Task<IActionResult> Update(int id, Category input)
-    {
-        var cat = await _db.Categories.FindAsync(id);
-        if (cat == null) return NotFound();
-        cat.Title = input.Title;
-        cat.Slug = input.Slug;
-        cat.ParentId = input.ParentId;
-        await _db.SaveChangesAsync();
-        return Ok(cat);
-    }
-
-    [HttpDelete("{id:int}")]
-    public async Task<IActionResult> Delete(int id)
-    {
-        var cat = await _db.Categories.Include(c => c.Children).FirstOrDefaultAsync(c => c.Id == id);
-        if (cat == null) return NotFound();
-        _db.Categories.Remove(cat);
-        await _db.SaveChangesAsync();
-        return Ok(cat);
+        [HttpDelete("{id:int}")]
+        public async Task<IActionResult> Delete(int id) =>
+            await _svc.DeleteAsync(id) ? Ok(new { id }) : NotFound();
     }
 }

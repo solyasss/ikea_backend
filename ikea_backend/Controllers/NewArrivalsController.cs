@@ -1,57 +1,37 @@
 using ikea_business.DTO;
-using ikea_data.Data;
-using ikea_data.Models;
+using ikea_business.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
-namespace ikea_backend.Controllers;
-
-[ApiController]
-[Route("api/new-arrivals")]
-public class NewArrivalsController : ControllerBase
+namespace ikea_backend.Controllers
 {
-    private readonly IkeaDbContext _db;
-
-    public NewArrivalsController(IkeaDbContext db) => _db = db;
-
-    [HttpGet]
-    public async Task<IActionResult> GetAll() =>
-        Ok(await _db.NewArrivals.ToListAsync());
-
-    [HttpGet("{id:int}")]
-    public async Task<IActionResult> Get(int id)
+    [ApiController]
+    [Route("api/new-arrivals")]
+    public class NewArrivalsController : ControllerBase
     {
-        var n = await _db.NewArrivals.FindAsync(id);
-        return n != null ? Ok(n) : NotFound();
-    }
+        private readonly INewArrivalService _svc;
+        public NewArrivalsController(INewArrivalService svc) => _svc = svc;
 
-    [HttpPost]
-    public async Task<IActionResult> Create(NewArrivalInput input)
-    {
-        var n = new NewArrival { ImageUrl = input.ImageUrl, Text = input.Text };
-        _db.NewArrivals.Add(n);
-        await _db.SaveChangesAsync();
-        return CreatedAtAction(nameof(Get), new { id = n.Id }, n);
-    }
+        [HttpGet]
+        public async Task<IActionResult> GetAll() =>
+            Ok(await _svc.GetAllAsync());
 
-    [HttpPut("{id:int}")]
-    public async Task<IActionResult> Update(int id, NewArrivalInput input)
-    {
-        var n = await _db.NewArrivals.FindAsync(id);
-        if (n is null) return NotFound();
-        n.ImageUrl = input.ImageUrl;
-        n.Text = input.Text;
-        await _db.SaveChangesAsync();
-        return Ok(n);
-    }
+        [HttpGet("{id:int}")]
+        public async Task<IActionResult> Get(int id) =>
+            await _svc.GetAsync(id) is { } n ? Ok(n) : NotFound();
 
-    [HttpDelete("{id:int}")]
-    public async Task<IActionResult> Delete(int id)
-    {
-        var n = await _db.NewArrivals.FindAsync(id);
-        if (n is null) return NotFound();
-        _db.NewArrivals.Remove(n);
-        await _db.SaveChangesAsync();
-        return Ok();
+        [HttpPost]
+        public async Task<IActionResult> Create(NewArrivalInput input)
+        {
+            var id = await _svc.CreateAsync(input);
+            return CreatedAtAction(nameof(Get), new { id }, new { id });
+        }
+
+        [HttpPut("{id:int}")]
+        public async Task<IActionResult> Update(int id, NewArrivalInput input) =>
+            await _svc.UpdateAsync(id, input) ? Ok(new { id }) : NotFound();
+
+        [HttpDelete("{id:int}")]
+        public async Task<IActionResult> Delete(int id) =>
+            await _svc.DeleteAsync(id) ? Ok() : NotFound();
     }
 }
