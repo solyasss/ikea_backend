@@ -10,6 +10,7 @@ namespace ikea_business.Mapping
         {
             CreateMap<ProductInput, Product>();
             CreateMap<NewArrivalInput, NewArrival>();
+            CreateMap<ProductImageInput, ProductImage>();   
             CreateMap<UserInput, User>()
                 .ForMember(dst => dst.PasswordHash, opt => opt.Ignore())
                 .ForMember(dst => dst.PasswordSalt, opt => opt.Ignore());
