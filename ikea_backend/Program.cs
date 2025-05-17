@@ -45,6 +45,7 @@ builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<INewArrivalService, NewArrivalService>();
 builder.Services.AddScoped<IProductImageService, ProductImageService>();
+builder.Services.AddScoped<IProductCommentService, ProductCommentService>();    
 
 
 // CORS
