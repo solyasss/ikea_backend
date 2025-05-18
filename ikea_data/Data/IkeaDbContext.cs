@@ -1,3 +1,4 @@
+using System.Security.Cryptography;
 using ikea_data.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
@@ -20,10 +21,13 @@ namespace ikea_data.Data
         public DbSet<SetItem> SetItems => Set<SetItem>();
         public DbSet<User> Users => Set<User>();
         public DbSet<NewArrival> NewArrivals => Set<NewArrival>();
+        
+        public DbSet<UserCard> UserCards => Set<UserCard>();
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+            
             
             // ----- конфигурация decimal -----
             modelBuilder.Entity<Product>(e =>
@@ -81,9 +85,56 @@ namespace ikea_data.Data
                 .WithMany()
                 .HasForeignKey(si => si.ProductId)
                 .OnDelete(DeleteBehavior.Cascade);
+            
+            modelBuilder.Entity<UserCard>(e =>
+            {
+                e.Property(c => c.CardNumber).HasMaxLength(16);
+                e.Property(c => c.CardType).HasMaxLength(32);
+
+                e.HasOne(c => c.User)
+                    .WithMany(u => u.Cards)
+                    .HasForeignKey(c => c.UserId)
+                    .OnDelete(DeleteBehavior.Cascade);
+            });
+
 
 
             // ---------- сиды ----------
+            modelBuilder.Entity<UserCard>().HasData(
+                new UserCard
+                {
+                    Id = 1,
+                    UserId = 2, // Bob
+                    CardNumber = "1111222233334444",
+                    ValidDay = 1,
+                    ValidYear = 2026,
+                    CardType = "visa",
+                    CvvHash = SHA256("123")
+                },
+                new UserCard
+                {
+                    Id = 2,
+                    UserId = 3, // Charlie
+                    CardNumber = "5555666677778888",
+                    ValidDay = 15,
+                    ValidYear = 2025,
+                    CardType = "mastercard",
+                    CvvHash = SHA256("456")
+                },
+                new UserCard
+                {
+                    Id = 3,
+                    UserId = 4, // Diana
+                    CardNumber = "9999000011112222",
+                    ValidDay = 30,
+                    ValidYear = 2027,
+                    CardType = "visa",
+                    CvvHash = SHA256("789")
+                }
+            );
+
+            
+            
             modelBuilder.Entity<Category>().HasData(
                 new Category { Id = 1, ParentId = null, Title = "Гостиная", Slug = "living-room" },
                 new Category { Id = 2, ParentId = null, Title = "Спальня", Slug = "bedroom" },
@@ -336,7 +387,13 @@ namespace ikea_data.Data
                 }
             );
         }
+        private static byte[] SHA256(string input)
+        {
+            using var sha = System.Security.Cryptography.SHA256.Create();
+            return sha.ComputeHash(System.Text.Encoding.UTF8.GetBytes(input));
+        }
     }
+    
 
     public class SampleContextFactory : IDesignTimeDbContextFactory<IkeaDbContext>
     {
@@ -356,4 +413,6 @@ namespace ikea_data.Data
             return new IkeaDbContext(optionsBuilder.Options);
         }
     }
+   
+
 }

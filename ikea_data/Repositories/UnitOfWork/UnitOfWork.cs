@@ -14,7 +14,8 @@ namespace ikea_data.Repositories.Implementations
             ISetRepository                   sets,
             IProductImageRepository          images,
             IProductCommentRepository        comments,
-            IProductCharacteristicRepository chars)
+            IProductCharacteristicRepository chars,
+            IUserCardRepository           cards)
         {
             _db             = db;
             Categories      = categories;
@@ -25,6 +26,7 @@ namespace ikea_data.Repositories.Implementations
             Images          = images;
             Comments        = comments;
             Characteristics = chars;
+            UserCards  = cards;
         }
 
         public ICategoryRepository              Categories      { get; }
@@ -35,7 +37,8 @@ namespace ikea_data.Repositories.Implementations
         public IProductImageRepository          Images          { get; }
         public IProductCommentRepository        Comments        { get; }
         public IProductCharacteristicRepository Characteristics { get; }
-
+        public  IUserCardRepository          UserCards        { get; }
+        
         public async Task<int> SaveAsync() => await _db.SaveChangesAsync();
         public void Dispose()               => _db.Dispose();
     }

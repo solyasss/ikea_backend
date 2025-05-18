@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ikea_data.Data;
 
@@ -11,9 +12,11 @@ using ikea_data.Data;
 namespace ikea_data.Data.Migrations
 {
     [DbContext(typeof(IkeaDbContext))]
-    partial class IkeaDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250518173944_AddUserCards")]
+    partial class AddUserCards
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -827,38 +830,6 @@ namespace ikea_data.Data.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("UserCards");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CardNumber = "1111222233334444",
-                            CardType = "visa",
-                            CvvHash = new byte[] { 166, 101, 164, 89, 32, 66, 47, 157, 65, 126, 72, 103, 239, 220, 79, 184, 160, 74, 31, 63, 255, 31, 160, 126, 153, 142, 134, 247, 247, 162, 122, 227 },
-                            UserId = 2,
-                            ValidDay = 1,
-                            ValidYear = 2026
-                        },
-                        new
-                        {
-                            Id = 2,
-                            CardNumber = "5555666677778888",
-                            CardType = "mastercard",
-                            CvvHash = new byte[] { 179, 168, 224, 225, 249, 171, 27, 254, 58, 54, 242, 49, 246, 118, 247, 139, 179, 10, 81, 157, 43, 33, 230, 197, 48, 192, 238, 232, 235, 180, 165, 208 },
-                            UserId = 3,
-                            ValidDay = 15,
-                            ValidYear = 2025
-                        },
-                        new
-                        {
-                            Id = 3,
-                            CardNumber = "9999000011112222",
-                            CardType = "visa",
-                            CvvHash = new byte[] { 53, 169, 227, 129, 177, 162, 117, 103, 84, 155, 95, 138, 111, 120, 60, 22, 126, 191, 128, 159, 28, 77, 106, 158, 54, 114, 64, 72, 77, 140, 226, 129 },
-                            UserId = 4,
-                            ValidDay = 30,
-                            ValidYear = 2027
-                        });
                 });
 
             modelBuilder.Entity("ikea_data.Models.Category", b =>
