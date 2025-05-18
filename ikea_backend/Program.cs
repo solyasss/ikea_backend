@@ -39,6 +39,7 @@ builder.Services.AddScoped<IProductCommentRepository, ProductCommentRepository>(
 builder.Services.AddScoped<IProductCharacteristicRepository, ProductCharacteristicRepository>();
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddScoped<IUserCardRepository, UserCardRepository>();
 
 // Services
 builder.Services.AddScoped<IProductService, ProductService>();
@@ -48,6 +49,8 @@ builder.Services.AddScoped<INewArrivalService, NewArrivalService>();
 builder.Services.AddScoped<IProductImageService, ProductImageService>();
 builder.Services.AddScoped<IProductCommentService, ProductCommentService>();
 builder.Services.AddScoped<IProductCharacteristicService, ProductCharacteristicService>();
+builder.Services.AddScoped<IUserCardService, UserCardService>();
+
 
 
 // CORS
