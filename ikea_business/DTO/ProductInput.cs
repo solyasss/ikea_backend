@@ -6,6 +6,7 @@ namespace ikea_business.DTO
         string   Name,
         decimal  Price,
         string?  MainImage,
+        string?  Description, 
         string?  Color,
         string?  Dimensions,
         decimal? Weight,

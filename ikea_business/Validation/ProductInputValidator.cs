@@ -11,6 +11,7 @@ namespace ikea_business.Validation
             RuleFor(x => x.CategoryId)    .GreaterThan(0);
             RuleFor(x => x.Name)          .NotEmpty().MaximumLength(100);
             RuleFor(x => x.Price)         .GreaterThan(0);
+            RuleFor(x => x.Description).MaximumLength(1000);
             RuleFor(x => x.Rating)        .InclusiveBetween(0, 9.99m).When(x => x.Rating.HasValue);
         }
     }

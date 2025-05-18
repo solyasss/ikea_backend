@@ -81,6 +81,10 @@ namespace ikea_data.Data
                 .WithMany()
                 .HasForeignKey(si => si.ProductId)
                 .OnDelete(DeleteBehavior.Cascade);
+            
+            modelBuilder.Entity<Product>()
+                .Property(p => p.Description)
+                .HasMaxLength(1000);  
 
 
             // ---------- сиды ----------
@@ -125,7 +129,8 @@ namespace ikea_data.Data
                     CategoryId = 19,
                     Name = "Comfort Chair",
                     Price = 59.99m,
-                    MainImage = "/src/assets/img/products/product-1.png",
+                    MainImage   = "/src/assets/img/product_details/product-1.png",
+                    Description = "Удобное коричневое кресло для гостиной", 
                     Color = "Brown",
                     Dimensions = "60x60x90",
                     Weight = 7.5m,
@@ -143,7 +148,8 @@ namespace ikea_data.Data
                     CategoryId = 12,
                     Name = "Minimalist Lamp",
                     Price = 19.99m,
-                    MainImage = "/src/assets/img/products/product-2.png",
+                    MainImage   = "/src/assets/img/product_details/product-2.png",
+                    Description = "Минималистичная настольная лампа — белый пластик",
                     Color = "White",
                     Dimensions = "15x15x45",
                     Weight = 1.2m,
@@ -161,7 +167,8 @@ namespace ikea_data.Data
                     CategoryId = 12,
                     Name = "Vintage Lamp",
                     Price = 19.99m,
-                    MainImage = "/src/assets/img/products/product-3.png",
+                    MainImage   = "/src/assets/img/product_details/product-3.png",
+                    Description = "Винтажный напольный светильник — матовый чёрный",
                     Color = "Black",
                     Dimensions = "18x18x50",
                     Weight = 1.5m,
@@ -177,11 +184,11 @@ namespace ikea_data.Data
 
             modelBuilder.Entity<ProductImage>().HasData(
                 new ProductImage
-                    { Id = 1, ProductId = 1, ImageUrl = "/src/assets/img/products/product-1.png", SortOrder = 0 },
+                    { Id = 1, ProductId = 1, ImageUrl = "/src/assets/img/product_details/product_mini_img/product-1.png", SortOrder = 0 },
                 new ProductImage
-                    { Id = 2, ProductId = 2, ImageUrl = "/src/assets/img/products/product-2.png", SortOrder = 0 },
+                    { Id = 2, ProductId = 2, ImageUrl = "/src/assets/img/product_details/product_mini_img/product-2.png", SortOrder = 0 },
                 new ProductImage
-                    { Id = 3, ProductId = 3, ImageUrl = "/src/assets/img/products/product-3.png", SortOrder = 0 }
+                    { Id = 3, ProductId = 3, ImageUrl = "/src/assets/img/product_details/product_mini_img/product-3.png", SortOrder = 0 }
             );
 
             modelBuilder.Entity<ProductComment>().HasData(
