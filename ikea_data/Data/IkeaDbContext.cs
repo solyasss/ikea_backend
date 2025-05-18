@@ -86,6 +86,10 @@ namespace ikea_data.Data
                 .HasForeignKey(si => si.ProductId)
                 .OnDelete(DeleteBehavior.Cascade);
             
+            modelBuilder.Entity<Product>()
+                .Property(p => p.Description)
+                .HasMaxLength(1000);  
+            
             modelBuilder.Entity<UserCard>(e =>
             {
                 e.Property(c => c.CardNumber).HasMaxLength(16);
@@ -176,7 +180,8 @@ namespace ikea_data.Data
                     CategoryId = 19,
                     Name = "Comfort Chair",
                     Price = 59.99m,
-                    MainImage = "/src/assets/img/products/product-1.png",
+                    MainImage   = "/src/assets/img/product_details/product-1.png",
+                    Description = "Удобное коричневое кресло для гостиной",  
                     Color = "Brown",
                     Dimensions = "60x60x90",
                     Weight = 7.5m,
@@ -194,7 +199,8 @@ namespace ikea_data.Data
                     CategoryId = 12,
                     Name = "Minimalist Lamp",
                     Price = 19.99m,
-                    MainImage = "/src/assets/img/products/product-2.png",
+                    MainImage   = "/src/assets/img/product_details/product-2.png",
+                    Description = "Минималистичная настольная лампа — белый пластик",
                     Color = "White",
                     Dimensions = "15x15x45",
                     Weight = 1.2m,
@@ -212,7 +218,8 @@ namespace ikea_data.Data
                     CategoryId = 12,
                     Name = "Vintage Lamp",
                     Price = 19.99m,
-                    MainImage = "/src/assets/img/products/product-3.png",
+                    MainImage   = "/src/assets/img/product_details/product-3.png",
+                    Description = "Винтажный напольный светильник — матовый чёрный",
                     Color = "Black",
                     Dimensions = "18x18x50",
                     Weight = 1.5m,

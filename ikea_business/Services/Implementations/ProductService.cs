@@ -25,7 +25,8 @@ namespace ikea_business.Services
                 p.Article,
                 p.Name,
                 p.Price,
-                p.MainImage
+                p.MainImage,
+                p.Description   
             });
         }
 
@@ -40,6 +41,7 @@ namespace ikea_business.Services
                 p.Name,
                 p.Price,
                 p.MainImage,
+                p.Description,   
                 p.Color,
                 p.Dimensions,
                 p.Weight,

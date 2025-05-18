@@ -10,27 +10,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6ff53050-cde2-4ad4-ba68-a2aade37d1fd" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/ikea_backend/Controllers/UserCardsController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ikea_business/DTO/UserCardInput.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ikea_business/Helpers/CvvHasher.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ikea_business/Services/Implementations/UserCardService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ikea_business/Services/Interfaces/IUserCardService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ikea_data/Models/UserCard.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ikea_data/Repositories/Implementations/UserCardRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ikea_data/Repositories/Interfaces/IUserCardRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.ikea_backend/.idea/shelf/Uncommitted_changes_before_Checkout_at_07_05_2025_20_14_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.ikea_backend/.idea/shelf/Uncommitted_changes_before_Checkout_at_07_05_2025_20_14__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.ikea_backend/.idea/shelf/Uncommitted_changes_before_Update_at_07_05_2025_20_16_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.ikea_backend/.idea/shelf/Uncommitted_changes_before_Update_at_07_05_2025_20_16__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ikea_backend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ikea_backend/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ikea_backend/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ikea_backend/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ikea_backend/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ikea_backend/appsettings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ikea_business/Mapping/MappingProfile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ikea_business/Mapping/MappingProfile.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ikea_data/Data/IkeaDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ikea_data/Data/IkeaDbContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ikea_data/Data/Migrations/IkeaDbContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ikea_data/Data/Migrations/IkeaDbContextModelSnapshot.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ikea_data/Models/User.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ikea_data/Models/User.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ikea_data/Repositories/UnitOfWork/IUnitOfWork.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ikea_data/Repositories/UnitOfWork/IUnitOfWork.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ikea_data/Repositories/UnitOfWork/UnitOfWork.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ikea_data/Repositories/UnitOfWork/UnitOfWork.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ikea_data/Models/Product.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ikea_data/Models/Product.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,7 +64,7 @@
     ".NET Launch Settings Profile.ikea_backend: http.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "arotar-api-2",
     "last_opened_file_path": "D:/Desktop/test",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
