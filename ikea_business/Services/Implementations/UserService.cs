@@ -23,17 +23,37 @@ namespace ikea_business.Services
             var list = await _uow.Users.GetAllAsync();
             return list.Select(u => new
             {
-                u.Id, u.FirstName, u.LastName, u.Email, u.IsAdmin
+                u.Id,
+                u.IsAdmin,
+                u.FirstName,
+                u.LastName,
+                u.BirthDate,
+                u.Country,
+                u.Address,
+                u.Phone,
+                u.Email
             });
         }
 
         public async Task<object?> GetAsync(int id)
         {
             var u = await _uow.Users.GetByIdAsync(id);
-            return u == null
-                ? null
-                : new { u.Id, u.FirstName, u.LastName, u.Email, u.IsAdmin };
+            if (u == null) return null;
+
+            return new
+            {
+                u.Id,
+                u.IsAdmin,
+                u.FirstName,
+                u.LastName,
+                u.BirthDate,
+                u.Country,
+                u.Address,
+                u.Phone,
+                u.Email
+            };
         }
+
 
         public async Task<int> CreateAsync(UserInput dto)
         {
