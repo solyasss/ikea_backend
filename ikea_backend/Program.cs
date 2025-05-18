@@ -10,6 +10,7 @@ using ikea_data.Repositories.Implementations;
 using ikea_data.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using ikea_business.Services.Implementations;
+using ikea_data.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -45,6 +46,8 @@ builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<INewArrivalService, NewArrivalService>();
 builder.Services.AddScoped<IProductImageService, ProductImageService>();
+builder.Services.AddScoped<IProductCommentService, ProductCommentService>();
+builder.Services.AddScoped<IProductCharacteristicService, ProductCharacteristicService>();
 
 
 // CORS
