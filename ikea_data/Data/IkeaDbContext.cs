@@ -1,3 +1,4 @@
+using System.Security.Cryptography;
 using ikea_data.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
@@ -20,10 +21,13 @@ namespace ikea_data.Data
         public DbSet<SetItem> SetItems => Set<SetItem>();
         public DbSet<User> Users => Set<User>();
         public DbSet<NewArrival> NewArrivals => Set<NewArrival>();
+        
+        public DbSet<UserCard> UserCards => Set<UserCard>();
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+            
             
             // ----- конфигурация decimal -----
             modelBuilder.Entity<Product>(e =>
@@ -82,12 +86,55 @@ namespace ikea_data.Data
                 .HasForeignKey(si => si.ProductId)
                 .OnDelete(DeleteBehavior.Cascade);
             
-            modelBuilder.Entity<Product>()
-                .Property(p => p.Description)
-                .HasMaxLength(1000);  
+            modelBuilder.Entity<UserCard>(e =>
+            {
+                e.Property(c => c.CardNumber).HasMaxLength(16);
+                e.Property(c => c.CardType).HasMaxLength(32);
+
+                e.HasOne(c => c.User)
+                    .WithMany(u => u.Cards)
+                    .HasForeignKey(c => c.UserId)
+                    .OnDelete(DeleteBehavior.Cascade);
+            });
+
 
 
             // ---------- сиды ----------
+            modelBuilder.Entity<UserCard>().HasData(
+                new UserCard
+                {
+                    Id = 1,
+                    UserId = 2, // Bob
+                    CardNumber = "1111222233334444",
+                    ValidDay = 1,
+                    ValidYear = 2026,
+                    CardType = "visa",
+                    CvvHash = SHA256("123")
+                },
+                new UserCard
+                {
+                    Id = 2,
+                    UserId = 3, // Charlie
+                    CardNumber = "5555666677778888",
+                    ValidDay = 15,
+                    ValidYear = 2025,
+                    CardType = "mastercard",
+                    CvvHash = SHA256("456")
+                },
+                new UserCard
+                {
+                    Id = 3,
+                    UserId = 4, // Diana
+                    CardNumber = "9999000011112222",
+                    ValidDay = 30,
+                    ValidYear = 2027,
+                    CardType = "visa",
+                    CvvHash = SHA256("789")
+                }
+            );
+
+            
+            
             modelBuilder.Entity<Category>().HasData(
                 new Category { Id = 1, ParentId = null, Title = "Гостиная", Slug = "living-room" },
                 new Category { Id = 2, ParentId = null, Title = "Спальня", Slug = "bedroom" },
@@ -129,8 +176,7 @@ namespace ikea_data.Data
                     CategoryId = 19,
                     Name = "Comfort Chair",
                     Price = 59.99m,
-                    MainImage   = "/src/assets/img/product_details/product-1.png",
-                    Description = "Удобное коричневое кресло для гостиной", 
+                    MainImage = "/src/assets/img/products/product-1.png",
                     Color = "Brown",
                     Dimensions = "60x60x90",
                     Weight = 7.5m,
@@ -148,8 +194,7 @@ namespace ikea_data.Data
                     CategoryId = 12,
                     Name = "Minimalist Lamp",
                     Price = 19.99m,
-                    MainImage   = "/src/assets/img/product_details/product-2.png",
-                    Description = "Минималистичная настольная лампа — белый пластик",
+                    MainImage = "/src/assets/img/products/product-2.png",
                     Color = "White",
                     Dimensions = "15x15x45",
                     Weight = 1.2m,
@@ -167,8 +212,7 @@ namespace ikea_data.Data
                     CategoryId = 12,
                     Name = "Vintage Lamp",
                     Price = 19.99m,
-                    MainImage   = "/src/assets/img/product_details/product-3.png",
-                    Description = "Винтажный напольный светильник — матовый чёрный",
+                    MainImage = "/src/assets/img/products/product-3.png",
                     Color = "Black",
                     Dimensions = "18x18x50",
                     Weight = 1.5m,
@@ -184,11 +228,11 @@ namespace ikea_data.Data
 
             modelBuilder.Entity<ProductImage>().HasData(
                 new ProductImage
-                    { Id = 1, ProductId = 1, ImageUrl = "/src/assets/img/product_details/product_mini_img/product-1.png", SortOrder = 0 },
+                    { Id = 1, ProductId = 1, ImageUrl = "/src/assets/img/products/product-1.png", SortOrder = 0 },
                 new ProductImage
-                    { Id = 2, ProductId = 2, ImageUrl = "/src/assets/img/product_details/product_mini_img/product-2.png", SortOrder = 0 },
+                    { Id = 2, ProductId = 2, ImageUrl = "/src/assets/img/products/product-2.png", SortOrder = 0 },
                 new ProductImage
-                    { Id = 3, ProductId = 3, ImageUrl = "/src/assets/img/product_details/product_mini_img/product-3.png", SortOrder = 0 }
+                    { Id = 3, ProductId = 3, ImageUrl = "/src/assets/img/products/product-3.png", SortOrder = 0 }
             );
 
             modelBuilder.Entity<ProductComment>().HasData(
@@ -343,7 +387,13 @@ namespace ikea_data.Data
                 }
             );
         }
+        private static byte[] SHA256(string input)
+        {
+            using var sha = System.Security.Cryptography.SHA256.Create();
+            return sha.ComputeHash(System.Text.Encoding.UTF8.GetBytes(input));
+        }
     }
+    
 
     public class SampleContextFactory : IDesignTimeDbContextFactory<IkeaDbContext>
     {
@@ -363,4 +413,6 @@ namespace ikea_data.Data
             return new IkeaDbContext(optionsBuilder.Options);
         }
     }
+   
+
 }

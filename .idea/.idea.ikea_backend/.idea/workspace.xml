@@ -10,19 +10,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6ff53050-cde2-4ad4-ba68-a2aade37d1fd" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.ikea_backend/.idea/projectSettingsUpdater.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ikea_backend/.idea/projectSettingsUpdater.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ikea_backend/Controllers/UserCardsController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ikea_business/DTO/UserCardInput.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ikea_business/Helpers/CvvHasher.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ikea_business/Services/Implementations/UserCardService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ikea_business/Services/Interfaces/IUserCardService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ikea_data/Models/UserCard.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ikea_data/Repositories/Implementations/UserCardRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ikea_data/Repositories/Interfaces/IUserCardRepository.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ikea_backend/.idea/shelf/Uncommitted_changes_before_Checkout_at_07_05_2025_20_14_[Changes]/shelved.patch" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ikea_backend/.idea/shelf/Uncommitted_changes_before_Checkout_at_07_05_2025_20_14__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ikea_backend/.idea/shelf/Uncommitted_changes_before_Update_at_07_05_2025_20_16_[Changes]/shelved.patch" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ikea_backend/.idea/shelf/Uncommitted_changes_before_Update_at_07_05_2025_20_16__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ikea_backend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ikea_backend/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ikea_backend/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ikea_backend/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ikea_backend/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ikea_backend/appsettings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ikea_business/DTO/ProductInput.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ikea_business/DTO/ProductInput.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ikea_business/Services/Implementations/ProductService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ikea_business/Services/Implementations/ProductService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ikea_business/Validation/ProductInputValidator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ikea_business/Validation/ProductInputValidator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ikea_business/Mapping/MappingProfile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ikea_business/Mapping/MappingProfile.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ikea_data/Data/IkeaDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ikea_data/Data/IkeaDbContext.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ikea_data/Data/Migrations/IkeaDbContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ikea_data/Data/Migrations/IkeaDbContextModelSnapshot.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ikea_data/Models/Product.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ikea_data/Models/Product.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ikea_data/Models/User.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ikea_data/Models/User.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ikea_data/Repositories/UnitOfWork/IUnitOfWork.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ikea_data/Repositories/UnitOfWork/IUnitOfWork.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ikea_data/Repositories/UnitOfWork/UnitOfWork.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ikea_data/Repositories/UnitOfWork/UnitOfWork.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,14 +38,9 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="DpaMonitoringSettings">
-    <option name="firstShow" value="false" />
+    <option name="autoShow" value="false" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="master" />
-      </map>
-    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -72,28 +75,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;.NET Launch Settings Profile.ikea_backend: IIS Express.executor&quot;: &quot;Run&quot;,
-    &quot;.NET Launch Settings Profile.ikea_backend: http.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;arotar-api-2&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Desktop/test&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;terminal&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    ".NET Launch Settings Profile.ikea_backend: IIS Express.executor": "Run",
+    ".NET Launch Settings Profile.ikea_backend: http.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "D:/Desktop/test",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "terminal",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
-      &quot;C#&quot;
+  "keyToStringList": {
+    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
+      "C#"
     ]
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected=".NET Launch Settings Profile.ikea_backend: http">
     <configuration name="ikea_backend: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/ikea_backend/ikea_backend.csproj" />
@@ -165,7 +168,6 @@
       <workItem from="1747077079706" duration="4012000" />
       <workItem from="1747159314126" duration="9662000" />
       <workItem from="1747230794976" duration="21438000" />
-      <workItem from="1747591448917" duration="1521000" />
     </task>
     <servers />
   </component>
@@ -193,24 +195,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
-          <properties exception="System.OperationCanceledException" breakIfHandledByOtherCode="false" displayValue="System.OperationCanceledException" />
-          <option name="timeStamp" value="1" />
-        </breakpoint>
-        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
-          <properties exception="System.Threading.Tasks.TaskCanceledException" breakIfHandledByOtherCode="false" displayValue="System.Threading.Tasks.TaskCanceledException" />
-          <option name="timeStamp" value="2" />
-        </breakpoint>
-        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
-          <properties exception="System.Threading.ThreadAbortException" breakIfHandledByOtherCode="false" displayValue="System.Threading.ThreadAbortException" />
-          <option name="timeStamp" value="3" />
-        </breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -13,6 +13,8 @@ namespace ikea_data.Repositories.Interfaces
         IProductImageRepository          Images          { get; }
         IProductCommentRepository        Comments        { get; }
         IProductCharacteristicRepository Characteristics { get; }
+        IUserCardRepository UserCards { get; }
+
         Task<int> SaveAsync();
     }
 }

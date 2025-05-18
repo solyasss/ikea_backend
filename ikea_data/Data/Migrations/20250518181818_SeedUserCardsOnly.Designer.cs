@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ikea_data.Data;
 
@@ -11,9 +12,11 @@ using ikea_data.Data;
 namespace ikea_data.Data.Migrations
 {
     [DbContext(typeof(IkeaDbContext))]
-    partial class IkeaDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250518181818_SeedUserCardsOnly")]
+    partial class SeedUserCardsOnly
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -317,10 +320,6 @@ namespace ikea_data.Data.Migrations
                     b.Property<string>("CountryOfOrigin")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Description")
-                        .HasMaxLength(1000)
-                        .HasColumnType("nvarchar(1000)");
-
                     b.Property<string>("Dimensions")
                         .HasColumnType("nvarchar(max)");
 
@@ -369,9 +368,8 @@ namespace ikea_data.Data.Migrations
                             CategoryId = 19,
                             Color = "Brown",
                             CountryOfOrigin = "Poland",
-                            Description = "Удобное коричневое кресло для гостиной",
                             Dimensions = "60x60x90",
-                            MainImage = "/src/assets/img/product_details/product-1.png",
+                            MainImage = "/src/assets/img/products/product-1.png",
                             Materials = "Wood, Textile",
                             Name = "Comfort Chair",
                             PackageContents = "1x Chair, Instructions",
@@ -388,9 +386,8 @@ namespace ikea_data.Data.Migrations
                             CategoryId = 12,
                             Color = "White",
                             CountryOfOrigin = "Germany",
-                            Description = "Минималистичная настольная лампа — белый пластик",
                             Dimensions = "15x15x45",
-                            MainImage = "/src/assets/img/product_details/product-2.png",
+                            MainImage = "/src/assets/img/products/product-2.png",
                             Materials = "Plastic, Metal",
                             Name = "Minimalist Lamp",
                             PackageContents = "1x Lamp, Bulb included",
@@ -407,9 +404,8 @@ namespace ikea_data.Data.Migrations
                             CategoryId = 12,
                             Color = "Black",
                             CountryOfOrigin = "Italy",
-                            Description = "Винтажный напольный светильник — матовый чёрный",
                             Dimensions = "18x18x50",
-                            MainImage = "/src/assets/img/product_details/product-3.png",
+                            MainImage = "/src/assets/img/products/product-3.png",
                             Materials = "Metal, Glass",
                             Name = "Vintage Lamp",
                             PackageContents = "1x Lamp",
@@ -546,21 +542,21 @@ namespace ikea_data.Data.Migrations
                         new
                         {
                             Id = 1,
-                            ImageUrl = "/src/assets/img/product_details/product_mini_img/product-1.png",
+                            ImageUrl = "/src/assets/img/products/product-1.png",
                             ProductId = 1,
                             SortOrder = 0
                         },
                         new
                         {
                             Id = 2,
-                            ImageUrl = "/src/assets/img/product_details/product_mini_img/product-2.png",
+                            ImageUrl = "/src/assets/img/products/product-2.png",
                             ProductId = 2,
                             SortOrder = 0
                         },
                         new
                         {
                             Id = 3,
-                            ImageUrl = "/src/assets/img/product_details/product_mini_img/product-3.png",
+                            ImageUrl = "/src/assets/img/products/product-3.png",
                             ProductId = 3,
                             SortOrder = 0
                         });
