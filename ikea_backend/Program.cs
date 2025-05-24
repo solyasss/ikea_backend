@@ -41,6 +41,8 @@ builder.Services.AddScoped<IProductCharacteristicRepository, ProductCharacterist
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IUserCardRepository, UserCardRepository>();
 builder.Services.AddScoped<IWishlistRepository, WishlistRepository>();
+builder.Services.AddScoped<ICartRepository, CartRepository>();
+
 
 
 // Services
@@ -53,6 +55,7 @@ builder.Services.AddScoped<IProductCommentService, ProductCommentService>();
 builder.Services.AddScoped<IProductCharacteristicService, ProductCharacteristicService>();
 builder.Services.AddScoped<IUserCardService, UserCardService>();
 builder.Services.AddScoped<IWishlistService, WishlistService>();
+builder.Services.AddScoped<ICartService, CartService>();
 
 
 

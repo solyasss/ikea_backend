@@ -18,7 +18,9 @@ namespace ikea_data.Repositories.Implementations
             IProductCommentRepository         comments,
             IProductCharacteristicRepository  chars,
             IUserCardRepository               cards,
-            IWishlistRepository               wishlists)         
+            IWishlistRepository               wishlists,
+            ICartRepository     carts)
+
         {
             _db             = db;
             Categories      = categories;
@@ -30,7 +32,9 @@ namespace ikea_data.Repositories.Implementations
             Comments        = comments;
             Characteristics = chars;
             UserCards       = cards;
-            Wishlists       = wishlists;                       
+            Wishlists       = wishlists;  
+            Carts     = carts;
+
         }
 
         public ICategoryRepository              Categories       { get; }
@@ -43,6 +47,8 @@ namespace ikea_data.Repositories.Implementations
         public IProductCharacteristicRepository Characteristics  { get; }
         public IUserCardRepository              UserCards        { get; }
         public IWishlistRepository              Wishlists        { get; }   
+        public ICartRepository  Carts { get; }
+
 
         public async Task<int> SaveAsync() => await _db.SaveChangesAsync();
         public void Dispose()               => _db.Dispose();

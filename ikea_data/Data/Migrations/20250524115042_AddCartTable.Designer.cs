@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ikea_data.Data;
 
@@ -11,9 +12,11 @@ using ikea_data.Data;
 namespace ikea_data.Data.Migrations
 {
     [DbContext(typeof(IkeaDbContext))]
-    partial class IkeaDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250524115042_AddCartTable")]
+    partial class AddCartTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,60 +24,6 @@ namespace ikea_data.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
-            modelBuilder.Entity("ikea_data.Models.Cart", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<bool>("IsCash")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Quantity")
-                        .HasColumnType("int");
-
-                    b.Property<decimal>("TotalSum")
-                        .HasPrecision(10, 2)
-                        .HasColumnType("decimal(10,2)");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ProductId");
-
-                    b.HasIndex("UserId", "ProductId")
-                        .IsUnique();
-
-                    b.ToTable("Carts");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            IsCash = true,
-                            ProductId = 1,
-                            Quantity = 1,
-                            TotalSum = 59.99m,
-                            UserId = 2
-                        },
-                        new
-                        {
-                            Id = 2,
-                            IsCash = false,
-                            ProductId = 2,
-                            Quantity = 2,
-                            TotalSum = 39.98m,
-                            UserId = 3
-                        });
-                });
 
             modelBuilder.Entity("ikea_data.Models.Category", b =>
                 {
@@ -964,25 +913,6 @@ namespace ikea_data.Data.Migrations
                             ProductId = 1,
                             UserId = 3
                         });
-                });
-
-            modelBuilder.Entity("ikea_data.Models.Cart", b =>
-                {
-                    b.HasOne("ikea_data.Models.Product", "Product")
-                        .WithMany()
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("ikea_data.Models.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Product");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("ikea_data.Models.Category", b =>

@@ -25,6 +25,8 @@ namespace ikea_data.Data
         public DbSet<UserCard> UserCards => Set<UserCard>();
         
         public DbSet<Wishlist> Wishlists => Set<Wishlist>();
+        public DbSet<Cart> Carts => Set<Cart>();
+
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -173,7 +175,25 @@ namespace ikea_data.Data
                 );
             });
 
-            
+            modelBuilder.Entity<Cart>(e =>
+            {
+                e.Property(c => c.TotalSum).HasPrecision(10, 2);        
+                e.HasIndex(c => new { c.UserId, c.ProductId }).IsUnique();
+                e.HasOne(c => c.User)
+                    .WithMany()
+                    .HasForeignKey(c => c.UserId)
+                    .OnDelete(DeleteBehavior.Cascade);
+                e.HasOne(c => c.Product)
+                    .WithMany()
+                    .HasForeignKey(c => c.ProductId)
+                    .OnDelete(DeleteBehavior.Cascade);
+
+                e.HasData(
+                    new Cart { Id = 1, UserId = 2, ProductId = 1, Quantity = 1, IsCash = true,  TotalSum = 59.99m },
+                    new Cart { Id = 2, UserId = 3, ProductId = 2, Quantity = 2, IsCash = false, TotalSum = 39.98m }
+                );
+            });
+
             modelBuilder.Entity<Category>().HasData(
                 new Category { Id = 1, ParentId = null, Title = "Гостиная", Slug = "living-room" },
                 new Category { Id = 2, ParentId = null, Title = "Спальня", Slug = "bedroom" },

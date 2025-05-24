@@ -15,6 +15,8 @@ namespace ikea_business.Mapping
             CreateMap<ProductCharacteristicInput, ProductCharacteristic>(); 
             CreateMap<UserCardInput, UserCard>();
             CreateMap<WishlistInput, Wishlist>();
+            CreateMap<CartInput, Cart>();
+
             CreateMap<UserInput, User>()
                 .ForMember(dst => dst.PasswordHash, opt => opt.Ignore())
                 .ForMember(dst => dst.PasswordSalt, opt => opt.Ignore());
