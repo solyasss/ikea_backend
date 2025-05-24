@@ -14,6 +14,8 @@ namespace ikea_data.Repositories.Interfaces
         IProductCommentRepository        Comments        { get; }
         IProductCharacteristicRepository Characteristics { get; }
         IUserCardRepository UserCards { get; }
+        IWishlistRepository Wishlists { get; }
+
 
         Task<int> SaveAsync();
     }

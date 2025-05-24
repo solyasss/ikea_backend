@@ -23,6 +23,9 @@ namespace ikea_data.Data
         public DbSet<NewArrival> NewArrivals => Set<NewArrival>();
         
         public DbSet<UserCard> UserCards => Set<UserCard>();
+        
+        public DbSet<Wishlist> Wishlists => Set<Wishlist>();
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -32,9 +35,9 @@ namespace ikea_data.Data
             // ----- конфигурация decimal -----
             modelBuilder.Entity<Product>(e =>
             {
-                e.Property(p => p.Price)   .HasPrecision(10, 2); // до  99 999 999.99
-                e.Property(p => p.Weight)  .HasPrecision(8, 2);  // до      999  .99
-                e.Property(p => p.Rating)  .HasPrecision(3, 2);  // 0.00–9.99 (достаточно)
+                e.Property(p => p.Price)   .HasPrecision(10, 2); 
+                e.Property(p => p.Weight)  .HasPrecision(8, 2);  
+                e.Property(p => p.Rating)  .HasPrecision(3, 2); 
             });
 
             // ---------- связи ----------
@@ -100,6 +103,19 @@ namespace ikea_data.Data
                     .HasForeignKey(c => c.UserId)
                     .OnDelete(DeleteBehavior.Cascade);
             });
+            modelBuilder.Entity<Wishlist>(e =>
+            {
+                e.HasIndex(w => new { w.UserId, w.ProductId }).IsUnique();  
+                e.HasOne(w => w.User)
+                    .WithMany()
+                    .HasForeignKey(w => w.UserId)
+                    .OnDelete(DeleteBehavior.Cascade);
+
+                e.HasOne(w => w.Product)
+                    .WithMany()
+                    .HasForeignKey(w => w.ProductId)
+                    .OnDelete(DeleteBehavior.Cascade);
+            });
 
 
 
@@ -108,7 +124,7 @@ namespace ikea_data.Data
                 new UserCard
                 {
                     Id = 1,
-                    UserId = 2, // Bob
+                    UserId = 2, 
                     CardNumber = "1111222233334444",
                     ValidDay = 1,
                     ValidYear = 2026,
@@ -118,7 +134,7 @@ namespace ikea_data.Data
                 new UserCard
                 {
                     Id = 2,
-                    UserId = 3, // Charlie
+                    UserId = 3, 
                     CardNumber = "5555666677778888",
                     ValidDay = 15,
                     ValidYear = 2025,
@@ -128,7 +144,7 @@ namespace ikea_data.Data
                 new UserCard
                 {
                     Id = 3,
-                    UserId = 4, // Diana
+                    UserId = 4,
                     CardNumber = "9999000011112222",
                     ValidDay = 30,
                     ValidYear = 2027,
@@ -136,8 +152,27 @@ namespace ikea_data.Data
                     CvvHash = SHA256("789")
                 }
             );
-
             
+            modelBuilder.Entity<Wishlist>(e =>
+            {
+                e.HasIndex(w => new { w.UserId, w.ProductId }).IsUnique();  
+                e.HasOne(w => w.User)
+                    .WithMany()
+                    .HasForeignKey(w => w.UserId)
+                    .OnDelete(DeleteBehavior.Cascade);
+
+                e.HasOne(w => w.Product)
+                    .WithMany()
+                    .HasForeignKey(w => w.ProductId)
+                    .OnDelete(DeleteBehavior.Cascade);
+    
+                e.HasData(
+                    new Wishlist { Id = 1, UserId = 2, ProductId = 1 },
+                    new Wishlist { Id = 2, UserId = 2, ProductId = 2 },
+                    new Wishlist { Id = 3, UserId = 3, ProductId = 1 }
+                );
+            });
+
             
             modelBuilder.Entity<Category>().HasData(
                 new Category { Id = 1, ParentId = null, Title = "Гостиная", Slug = "living-room" },
@@ -247,7 +282,7 @@ namespace ikea_data.Data
                 {
                     Id = 1,
                     ProductId = 1,
-                    UserId = 2, // Bob
+                    UserId = 2, 
                     CommentText = "Nice chair",
                     Rating = 5
                 },
@@ -255,7 +290,7 @@ namespace ikea_data.Data
                 {
                     Id = 2,
                     ProductId = 2,
-                    UserId = 3, // Charlie
+                    UserId = 3, 
                     CommentText = "Bright lamp",
                     Rating = 4
                 }
@@ -408,13 +443,11 @@ namespace ikea_data.Data
         {
             var optionsBuilder = new DbContextOptionsBuilder<IkeaDbContext>();
 
-            // получаем конфигурацию из файла appsettings.json
             ConfigurationBuilder builder = new ConfigurationBuilder();
             builder.SetBasePath(Directory.GetCurrentDirectory());
             builder.AddJsonFile("appsettings.json");
             IConfigurationRoot config = builder.Build();
 
-            // получаем строку подключения из файла appsettings.json
             string connectionString = config.GetConnectionString("DefaultConnection");
             optionsBuilder.UseSqlServer(connectionString);
             return new IkeaDbContext(optionsBuilder.Options);

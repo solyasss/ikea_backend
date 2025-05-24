@@ -6,16 +6,19 @@ namespace ikea_data.Repositories.Implementations
     public class UnitOfWork : IUnitOfWork
     {
         private readonly IkeaDbContext _db;
-        public UnitOfWork(IkeaDbContext db,
-            ICategoryRepository              categories,
-            IProductRepository               products,
-            IUserRepository                  users,
-            INewArrivalRepository            arrivals,
-            ISetRepository                   sets,
-            IProductImageRepository          images,
-            IProductCommentRepository        comments,
-            IProductCharacteristicRepository chars,
-            IUserCardRepository           cards)
+
+        public UnitOfWork(
+            IkeaDbContext                     db,
+            ICategoryRepository               categories,
+            IProductRepository                products,
+            IUserRepository                   users,
+            INewArrivalRepository             arrivals,
+            ISetRepository                    sets,
+            IProductImageRepository           images,
+            IProductCommentRepository         comments,
+            IProductCharacteristicRepository  chars,
+            IUserCardRepository               cards,
+            IWishlistRepository               wishlists)         
         {
             _db             = db;
             Categories      = categories;
@@ -26,19 +29,21 @@ namespace ikea_data.Repositories.Implementations
             Images          = images;
             Comments        = comments;
             Characteristics = chars;
-            UserCards  = cards;
+            UserCards       = cards;
+            Wishlists       = wishlists;                       
         }
 
-        public ICategoryRepository              Categories      { get; }
-        public IProductRepository               Products        { get; }
-        public IUserRepository                  Users           { get; }
-        public INewArrivalRepository            NewArrivals     { get; }
-        public ISetRepository                   Sets            { get; }
-        public IProductImageRepository          Images          { get; }
-        public IProductCommentRepository        Comments        { get; }
-        public IProductCharacteristicRepository Characteristics { get; }
-        public  IUserCardRepository          UserCards        { get; }
-        
+        public ICategoryRepository              Categories       { get; }
+        public IProductRepository               Products         { get; }
+        public IUserRepository                  Users            { get; }
+        public INewArrivalRepository            NewArrivals      { get; }
+        public ISetRepository                   Sets             { get; }
+        public IProductImageRepository          Images           { get; }
+        public IProductCommentRepository        Comments         { get; }
+        public IProductCharacteristicRepository Characteristics  { get; }
+        public IUserCardRepository              UserCards        { get; }
+        public IWishlistRepository              Wishlists        { get; }   
+
         public async Task<int> SaveAsync() => await _db.SaveChangesAsync();
         public void Dispose()               => _db.Dispose();
     }

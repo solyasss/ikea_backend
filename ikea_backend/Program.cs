@@ -40,6 +40,8 @@ builder.Services.AddScoped<IProductCharacteristicRepository, ProductCharacterist
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IUserCardRepository, UserCardRepository>();
+builder.Services.AddScoped<IWishlistRepository, WishlistRepository>();
+
 
 // Services
 builder.Services.AddScoped<IProductService, ProductService>();
@@ -50,6 +52,7 @@ builder.Services.AddScoped<IProductImageService, ProductImageService>();
 builder.Services.AddScoped<IProductCommentService, ProductCommentService>();
 builder.Services.AddScoped<IProductCharacteristicService, ProductCharacteristicService>();
 builder.Services.AddScoped<IUserCardService, UserCardService>();
+builder.Services.AddScoped<IWishlistService, WishlistService>();
 
 
 
