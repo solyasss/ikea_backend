@@ -1,4 +1,5 @@
 using ikea_business.DTO;
+using ikea_business.Services.Implementations;
 using ikea_business.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -29,4 +30,11 @@ public class OrdersController : ControllerBase
     [HttpDelete("{id:int}")]
     public async Task<IActionResult> Delete(int id) =>
         await _svc.DeleteAsync(id) ? Ok(new { id }) : NotFound();
+
+    [HttpGet("by-user/{userId}")]
+    public async Task<IActionResult> GetByUserId(int userId)
+    {
+        var orders = await _svc.GetByUserIdAsync(userId);
+        return Ok(orders);
+    }
 }

@@ -93,4 +93,40 @@ public class OrderService : IOrderService
         await _uow.SaveAsync();
         return true;
     }
+
+    public async Task<IEnumerable<object>> GetByUserIdAsync(int userId)
+    {
+        var orders = (await _uow.Orders.GetAllAsync())
+            .Where(o => o.UserId == userId)
+            .ToList();
+
+        var result = new List<object>();
+
+        foreach (var o in orders)
+        {
+            var product = await _uow.Products.GetByIdAsync(o.ProductId);
+            var comment = (await _uow.Comments.GetAllAsync())
+                .FirstOrDefault(c => c.UserId == o.UserId && c.ProductId == o.ProductId);
+
+            result.Add(new
+            {
+                o.Id,
+                o.OrderNumber,
+                o.UserId,
+                o.ProductId,
+                ProductName = product?.Name,
+                ProductImage = product?.MainImage,
+                ProductPrice = product?.Price,
+                CommentText = comment?.CommentText,
+                CommentRating = comment?.Rating,
+                o.OrderDate,
+                o.ReceiveDate,
+                o.IsCash,
+                o.TotalSum
+            });
+        }
+
+        return result;
+    }
+
 }

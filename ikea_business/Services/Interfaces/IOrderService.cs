@@ -8,4 +8,6 @@ public interface IOrderService
     Task<object?>             GetAsync(int id);
     Task<int>                 CreateAsync(OrderInput dto);
     Task<bool>                DeleteAsync(int id);
+    Task<IEnumerable<object>> GetByUserIdAsync(int userId);
+
 }
