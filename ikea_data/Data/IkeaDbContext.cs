@@ -26,6 +26,8 @@ namespace ikea_data.Data
         
         public DbSet<Wishlist> Wishlists => Set<Wishlist>();
         public DbSet<Cart> Carts => Set<Cart>();
+        public DbSet<Order> Orders => Set<Order>();
+
 
 
 
@@ -117,6 +119,39 @@ namespace ikea_data.Data
                     .WithMany()
                     .HasForeignKey(w => w.ProductId)
                     .OnDelete(DeleteBehavior.Cascade);
+            });
+            modelBuilder.Entity<Order>(e =>
+            {
+                e.Property(o => o.TotalSum).HasPrecision(10, 2);
+                e.HasIndex(o => o.OrderNumber).IsUnique();
+
+                e.HasOne(o => o.User)
+                    .WithMany()
+                    .HasForeignKey(o => o.UserId)
+                    .OnDelete(DeleteBehavior.Cascade);
+                e.HasOne(o => o.Product)
+                    .WithMany()
+                    .HasForeignKey(o => o.ProductId)
+                    .OnDelete(DeleteBehavior.Cascade);
+
+                e.HasData(
+                    new Order
+                    {
+                        Id = 1, OrderNumber = "Order-1",
+                        UserId = 2, ProductId = 1,
+                        OrderDate = new DateTime(2025, 5, 20),
+                        ReceiveDate = new DateTime(2025, 5, 25),
+                        IsCash = false, TotalSum = 59.99m
+                    },
+                    new Order
+                    {
+                        Id = 2, OrderNumber = "Order-2",
+                        UserId = 3, ProductId = 2,
+                        OrderDate = new DateTime(2025, 5, 21),
+                        ReceiveDate = new DateTime(2025, 5, 26),
+                        IsCash = true, TotalSum = 19.99m
+                    }
+                );
             });
 
 

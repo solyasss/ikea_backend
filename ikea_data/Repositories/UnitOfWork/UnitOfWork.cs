@@ -19,7 +19,8 @@ namespace ikea_data.Repositories.Implementations
             IProductCharacteristicRepository  chars,
             IUserCardRepository               cards,
             IWishlistRepository               wishlists,
-            ICartRepository     carts)
+            ICartRepository     carts,
+            IOrderRepository orders)
 
         {
             _db             = db;
@@ -34,6 +35,7 @@ namespace ikea_data.Repositories.Implementations
             UserCards       = cards;
             Wishlists       = wishlists;  
             Carts     = carts;
+            Orders = orders;
 
         }
 
@@ -48,6 +50,7 @@ namespace ikea_data.Repositories.Implementations
         public IUserCardRepository              UserCards        { get; }
         public IWishlistRepository              Wishlists        { get; }   
         public ICartRepository  Carts { get; }
+        public IOrderRepository  Orders { get; }
 
 
         public async Task<int> SaveAsync() => await _db.SaveChangesAsync();

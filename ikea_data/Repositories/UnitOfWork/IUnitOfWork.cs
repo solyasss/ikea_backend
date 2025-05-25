@@ -16,6 +16,8 @@ namespace ikea_data.Repositories.Interfaces
         IUserCardRepository UserCards { get; }
         IWishlistRepository Wishlists { get; }
         ICartRepository Carts { get; }
+        IOrderRepository Orders { get; }
+
 
 
 

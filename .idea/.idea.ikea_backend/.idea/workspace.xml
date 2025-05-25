@@ -10,16 +10,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6ff53050-cde2-4ad4-ba68-a2aade37d1fd" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/ikea_backend/Controllers/CartsController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ikea_business/DTO/CartInput.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ikea_business/Services/Implementations/CartService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ikea_business/Services/Interfaces/ICartService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ikea_data/Models/Cart.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ikea_data/Repositories/Implementations/CartRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ikea_data/Repositories/Interfaces/ICartRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ikea_backend/Controllers/OrdersController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ikea_business/DTO/OrderInput.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ikea_business/Services/Implementations/OrderService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ikea_business/Services/Interfaces/IOrderService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ikea_data/Models/Order.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ikea_data/Repositories/Implementations/OrderRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ikea_data/Repositories/Interfaces/IOrderRepository.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ikea_backend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ikea_backend/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ikea_backend/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ikea_backend/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ikea_business/Mapping/MappingProfile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ikea_business/Mapping/MappingProfile.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ikea_data/Data/IkeaDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ikea_data/Data/IkeaDbContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ikea_data/Data/Migrations/IkeaDbContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ikea_data/Data/Migrations/IkeaDbContextModelSnapshot.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ikea_data/Repositories/UnitOfWork/IUnitOfWork.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ikea_data/Repositories/UnitOfWork/IUnitOfWork.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ikea_data/Repositories/UnitOfWork/UnitOfWork.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ikea_data/Repositories/UnitOfWork/UnitOfWork.cs" afterDir="false" />
     </list>
@@ -29,7 +31,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="DpaMonitoringSettings">
-    <option name="firstShow" value="false" />
+    <option name="autoShow" value="false" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -160,6 +162,7 @@
       <workItem from="1747077079706" duration="4012000" />
       <workItem from="1747159314126" duration="9662000" />
       <workItem from="1747230794976" duration="21438000" />
+      <workItem from="1748172464879" duration="2038000" />
     </task>
     <servers />
   </component>
