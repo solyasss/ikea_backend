@@ -40,6 +40,19 @@ namespace ikea_business.Services
             var u = await _uow.Users.GetByIdAsync(id);
             if (u == null) return null;
 
+            var cards = await _uow.UserCards.GetAllAsync();
+            var userCards = cards
+                .Where(c => c.UserId == id)
+                .Select(c => new
+                {
+                    c.Id,
+                    c.CardNumber,
+                    c.ValidDay,
+                    c.ValidYear,
+                    c.CardType
+                })
+                .ToList();
+
             return new
             {
                 u.Id,
@@ -50,7 +63,9 @@ namespace ikea_business.Services
                 u.Country,
                 u.Address,
                 u.Phone,
-                u.Email
+                u.Email,
+                Card = userCards
+
             };
         }
 
