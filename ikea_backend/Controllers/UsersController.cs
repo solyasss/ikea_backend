@@ -1,4 +1,5 @@
 using ikea_business.DTO;
+using ikea_business.Services;
 using ikea_business.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -29,6 +30,18 @@ namespace ikea_backend.Controllers
         [HttpPut("{id:int}")]
         public async Task<IActionResult> Update(int id, UserInput dto) =>
             await _svc.UpdateAsync(id, dto) ? Ok(new { id }) : NotFound();
+
+        [HttpPost("{id}/change-password")]
+        public async Task<IActionResult> ChangePassword(int id, [FromBody] ChangePasswordDto dto)
+        {
+            if (string.IsNullOrWhiteSpace(dto.Password))
+                return BadRequest("Password is required");
+
+            var success = await _svc.ChangePasswordAsync(id, dto.Password);
+            if (!success) return NotFound();
+
+            return Ok();
+        }
 
         [HttpDelete("{id:int}")]
         public async Task<IActionResult> Delete(int id) =>

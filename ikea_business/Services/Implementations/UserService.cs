@@ -88,11 +88,22 @@ namespace ikea_business.Services
             if (e == null) return false;
 
             _map.Map(dto, e);
-            PasswordHasher.CreateHash(dto.Password, out var hash, out var salt);
-            e.PasswordHash = hash;
-            e.PasswordSalt = salt;
-
+           
             _uow.Users.Update(e);
+            await _uow.SaveAsync();
+            return true;
+        }
+
+        public async Task<bool> ChangePasswordAsync(int id, string newPassword)
+        {
+            var user = await _uow.Users.GetByIdAsync(id);
+            if (user == null) return false;
+
+            PasswordHasher.CreateHash(newPassword, out var hash, out var salt);
+            user.PasswordHash = hash;
+            user.PasswordSalt = salt;
+
+            _uow.Users.Update(user);
             await _uow.SaveAsync();
             return true;
         }

@@ -9,4 +9,6 @@ public interface IUserService
     Task<int>                 CreateAsync(UserInput dto);
     Task<bool>                UpdateAsync(int id, UserInput dto);
     Task<bool>                DeleteAsync(int id);
+    Task<bool> ChangePasswordAsync(int id, string newPassword);
+
 }
