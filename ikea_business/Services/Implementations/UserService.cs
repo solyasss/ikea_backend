@@ -82,7 +82,7 @@ namespace ikea_business.Services
             return entity.Id;
         }
 
-        public async Task<bool> UpdateAsync(int id, UserInput dto)
+        public async Task<bool> UpdateAsync(int id, UserUpdateInput dto)
         {
             var e = await _uow.Users.GetByIdAsync(id);
             if (e == null) return false;

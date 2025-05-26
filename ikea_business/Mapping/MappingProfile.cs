@@ -22,6 +22,8 @@ namespace ikea_business.Mapping
             CreateMap<UserInput, User>()
                 .ForMember(dst => dst.PasswordHash, opt => opt.Ignore())
                 .ForMember(dst => dst.PasswordSalt, opt => opt.Ignore());
+
+            CreateMap<UserUpdateInput, User>();
         }
     }
 }

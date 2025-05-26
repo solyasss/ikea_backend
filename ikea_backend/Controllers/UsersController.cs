@@ -28,7 +28,7 @@ namespace ikea_backend.Controllers
         }
 
         [HttpPut("{id:int}")]
-        public async Task<IActionResult> Update(int id, UserInput dto) =>
+        public async Task<IActionResult> Update(int id, UserUpdateInput dto) =>
             await _svc.UpdateAsync(id, dto) ? Ok(new { id }) : NotFound();
 
         [HttpPost("{id}/change-password")]
