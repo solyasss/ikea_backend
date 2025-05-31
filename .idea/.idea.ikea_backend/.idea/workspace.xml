@@ -10,23 +10,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6ff53050-cde2-4ad4-ba68-a2aade37d1fd" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.ikea_backend/.idea/shelf/Uncommitted_changes_before_Checkout_at_18_05_2025_20_45_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.ikea_backend/.idea/shelf/Uncommitted_changes_before_Checkout_at_18_05_2025_20_45__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.ikea_backend/.idea/shelf/Uncommitted_changes_before_Checkout_at_18_05_2025_20_48_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.ikea_backend/.idea/shelf/Uncommitted_changes_before_Checkout_at_18_05_2025_20_48__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.ikea_backend/.idea/shelf/Uncommitted_changes_before_Update_at_18_05_2025_19_15_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.ikea_backend/.idea/shelf/Uncommitted_changes_before_Update_at_18_05_2025_19_15__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.ikea_backend/.idea/shelf/Uncommitted_changes_before_Update_at_18_05_2025_20_44_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.ikea_backend/.idea/shelf/Uncommitted_changes_before_Update_at_18_05_2025_20_44__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.ikea_backend/.idea/shelf/Uncommitted_changes_before_Update_at_18_05_2025_20_49_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.ikea_backend/.idea/shelf/Uncommitted_changes_before_Update_at_18_05_2025_20_49__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.ikea_backend/.idea/shelf/Uncommitted_changes_before_Update_at_18_05_2025_21_57_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.ikea_backend/.idea/shelf/Uncommitted_changes_before_Update_at_18_05_2025_21_57__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ikea_backend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ikea_backend/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ikea_backend/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ikea_backend/appsettings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ikea_business/DTO/UserInput.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ikea_business/DTO/UserInput.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ikea_data/Data/Migrations/IkeaDbContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ikea_data/Data/Migrations/IkeaDbContextModelSnapshot.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ikea_data/Models/User.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ikea_data/Models/User.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ikea_business/Validation/ProductInputValidator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ikea_business/Validation/ProductInputValidator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ikea_business/Validation/UserInputValidator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ikea_business/Validation/UserInputValidator.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -166,7 +152,7 @@
       <workItem from="1747159314126" duration="9662000" />
       <workItem from="1747230794976" duration="21438000" />
       <workItem from="1748172464879" duration="2476000" />
-      <workItem from="1748710569878" duration="999000" />
+      <workItem from="1748710569878" duration="1982000" />
     </task>
     <servers />
   </component>
