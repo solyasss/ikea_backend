@@ -9,4 +9,5 @@ public record UserInput(
     string   Address,
     string   Phone,
     string   Email,
-    string   Password);
+    string   Password,
+    string   AvatarUrl);
