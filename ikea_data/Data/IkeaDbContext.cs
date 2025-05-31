@@ -29,8 +29,7 @@ namespace ikea_data.Data
         public DbSet<Order> Orders => Set<Order>();
 
 
-
-
+        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -351,6 +350,9 @@ namespace ikea_data.Data
                 }
             );
 
+           
+
+            
             modelBuilder.Entity<ProductCharacteristic>().HasData(
                 new ProductCharacteristic { Id = 1, ProductId = 1, Name = "Material", Value = "Wood" },
                 new ProductCharacteristic { Id = 2, ProductId = 1, Name = "Color", Value = "Brown" },

@@ -116,5 +116,18 @@ namespace ikea_business.Services
             await _uow.SaveAsync();
             return true;
         }
+        
+        public async Task<User?> AuthenticateAsync(string email, string password)
+        {
+            var users = await _uow.Users.GetAllAsync();
+            var user = users.FirstOrDefault(u => u.Email.ToLower() == email.ToLower());
+
+            if (user == null) return null;
+            
+            bool isPasswordValid = PasswordHasher.Verify(password, user.PasswordHash, user.PasswordSalt);
+            if (!isPasswordValid) return null;
+
+            return user;
+        }
     }
 }

@@ -1,6 +1,6 @@
-using ikea_business.DTO;
-using ikea_business.Services.Interfaces;
+using System.Text.Json;
 using Microsoft.AspNetCore.Mvc;
+using ikea_business.DTO;
 
 namespace ikea_backend.Controllers;
 
@@ -8,25 +8,37 @@ namespace ikea_backend.Controllers;
 [Route("api/wishlists")]
 public class WishlistsController : ControllerBase
 {
-    private readonly IWishlistService _svc;
-    public WishlistsController(IWishlistService svc) => _svc = svc;
+    private const string WishlistSessionKey = "Wishlist";
 
     [HttpGet]
-    public async Task<IActionResult> GetAll() =>
-        Ok(await _svc.GetAllAsync());
-
-    [HttpGet("{id:int}")]
-    public async Task<IActionResult> Get(int id) =>
-        await _svc.GetAsync(id) is { } w ? Ok(w) : NotFound();
-
-    [HttpPost]
-    public async Task<IActionResult> Create(WishlistInput dto)
+    public IActionResult GetWishlist()
     {
-        var id = await _svc.CreateAsync(dto);
-        return CreatedAtAction(nameof(Get), new { id }, new { id });
+        var wishlistJson = HttpContext.Session.GetString(WishlistSessionKey);
+        var wishlist = string.IsNullOrEmpty(wishlistJson)
+            ? new List<WishlistInput>()
+            : JsonSerializer.Deserialize<List<WishlistInput>>(wishlistJson);
+
+        return Ok(wishlist);
     }
 
-    [HttpDelete("{id:int}")]
-    public async Task<IActionResult> Delete(int id) =>
-        await _svc.DeleteAsync(id) ? Ok(new { id }) : NotFound();
+    [HttpPost("add")]
+    public IActionResult AddToWishlist([FromBody] WishlistInput item)
+    {
+        var wishlistJson = HttpContext.Session.GetString(WishlistSessionKey);
+        var wishlist = string.IsNullOrEmpty(wishlistJson)
+            ? new List<WishlistInput>()
+            : JsonSerializer.Deserialize<List<WishlistInput>>(wishlistJson);
+
+        wishlist!.Add(item);
+
+        HttpContext.Session.SetString(WishlistSessionKey, JsonSerializer.Serialize(wishlist));
+        return Ok(new { message = "Item added to wishlist" });
+    }
+
+    [HttpPost("clear")]
+    public IActionResult ClearWishlist()
+    {
+        HttpContext.Session.Remove(WishlistSessionKey);
+        return Ok(new { message = "Wishlist cleared" });
+    }
 }
