@@ -42,11 +42,7 @@ namespace ikea_business.Validation
                 .NotEmpty().WithMessage("Password is required.")
                 .MinimumLength(6).WithMessage("Password must be at least 6 characters.");
 
-            RuleFor(x => x.AvatarUrl)
-                .NotEmpty().WithMessage("Avatar URL is required.")
-                .MaximumLength(255).WithMessage("Avatar URL cannot exceed 255 characters.")
-                .Must(url => Uri.IsWellFormedUriString(url, UriKind.RelativeOrAbsolute))
-                .WithMessage("Avatar URL must be a valid URL.");
+            
         }
     }
 }
