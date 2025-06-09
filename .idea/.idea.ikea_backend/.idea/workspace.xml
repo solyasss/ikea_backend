@@ -10,9 +10,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6ff53050-cde2-4ad4-ba68-a2aade37d1fd" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/ikea_business/DTO/CartItemInput.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ikea_business/DTO/WishlistItemInput.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ikea_backend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ikea_backend/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ikea_business/DTO/UserInput.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ikea_business/DTO/UserInput.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ikea_business/Validation/UserInputValidator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ikea_business/Validation/UserInputValidator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ikea_backend/Controllers/CartsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ikea_backend/Controllers/CartsController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ikea_backend/Controllers/WishlistsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ikea_backend/Controllers/WishlistsController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -154,7 +156,7 @@
       <workItem from="1747230794976" duration="21438000" />
       <workItem from="1748172464879" duration="2476000" />
       <workItem from="1748710569878" duration="7260000" />
-      <workItem from="1749463922054" duration="748000" />
+      <workItem from="1749463922054" duration="6317000" />
     </task>
     <servers />
   </component>

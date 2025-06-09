@@ -22,14 +22,41 @@ public class CartsController : ControllerBase
     }
 
     [HttpPost("add")]
-    public IActionResult AddToCart([FromBody] CartInput item)
+    public IActionResult AddToCart([FromBody] CartItemInput item)
     {
+        var userId = HttpContext.Session.GetInt32("UserId");
+        if (userId == null)
+            return Unauthorized(new { message = "User not logged in" });
+
         var cartJson = HttpContext.Session.GetString(CartSessionKey);
         var cart = string.IsNullOrEmpty(cartJson)
             ? new List<CartInput>()
-            : JsonSerializer.Deserialize<List<CartInput>>(cartJson);
+            : JsonSerializer.Deserialize<List<CartInput>>(cartJson)!;
 
-        cart!.Add(item);
+        var existingItem = cart.FirstOrDefault(x => x.ProductId == item.ProductId);
+        if (existingItem != null)
+        {
+            existingItem = existingItem with
+            {
+                Quantity = existingItem.Quantity + item.Quantity,
+                TotalSum = existingItem.TotalSum + item.TotalSum
+            };
+
+            cart.RemoveAll(x => x.ProductId == item.ProductId);
+            cart.Add(existingItem);
+        }
+        else
+        {
+            var newItem = new CartInput(
+                UserId: userId.Value,
+                ProductId: item.ProductId,
+                Quantity: item.Quantity,
+                IsCash: item.IsCash,
+                TotalSum: item.TotalSum
+            );
+
+            cart.Add(newItem);
+        }
 
         HttpContext.Session.SetString(CartSessionKey, JsonSerializer.Serialize(cart));
         return Ok(new { message = "Item added to cart" });

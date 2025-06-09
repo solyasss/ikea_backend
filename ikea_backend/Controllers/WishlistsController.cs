@@ -22,14 +22,28 @@ public class WishlistsController : ControllerBase
     }
 
     [HttpPost("add")]
-    public IActionResult AddToWishlist([FromBody] WishlistInput item)
+    public IActionResult AddToWishlist([FromBody] WishlistItemInput item)
     {
+        var userId = HttpContext.Session.GetInt32("UserId");
+        if (userId == null)
+            return Unauthorized(new { message = "User not logged in" });
+
         var wishlistJson = HttpContext.Session.GetString(WishlistSessionKey);
         var wishlist = string.IsNullOrEmpty(wishlistJson)
             ? new List<WishlistInput>()
-            : JsonSerializer.Deserialize<List<WishlistInput>>(wishlistJson);
+            : JsonSerializer.Deserialize<List<WishlistInput>>(wishlistJson)!;
 
-        wishlist!.Add(item);
+        if (wishlist.Any(x => x.ProductId == item.ProductId))
+        {
+            return BadRequest(new { message = "Item already in wishlist" });
+        }
+
+        var newItem = new WishlistInput(
+            UserId: userId.Value,
+            ProductId: item.ProductId
+        );
+
+        wishlist.Add(newItem);
 
         HttpContext.Session.SetString(WishlistSessionKey, JsonSerializer.Serialize(wishlist));
         return Ok(new { message = "Item added to wishlist" });
