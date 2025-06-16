@@ -25,4 +25,6 @@ public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEnt
     public async Task AddAsync(TEntity entity) => await _set.AddAsync(entity);
     public void Update(TEntity entity) => _set.Update(entity);
     public void Delete(TEntity entity) => _set.Remove(entity);
+    
+   
 }

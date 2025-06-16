@@ -15,9 +15,16 @@ namespace ikea_backend.Controllers
         public async Task<IActionResult> GetAll() =>
             Ok(await _svc.GetAllAsync());
 
+        [HttpGet("paged")]
+        public async Task<IActionResult> GetPaged([FromQuery] int page = 1, [FromQuery] int pageSize = 10)
+        {
+            var (items, totalCount) = await _svc.GetPagedAsync(page, pageSize);
+            return Ok(new { items, totalCount });
+        }
         [HttpGet("{id:int}")]
         public async Task<IActionResult> Get(int id) =>
             await _svc.GetAsync(id) is { } p ? Ok(p) : NotFound();
+        
 
         [HttpPost]
         public async Task<IActionResult> Create(ProductInput dto)

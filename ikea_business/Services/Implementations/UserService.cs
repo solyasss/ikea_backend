@@ -1,4 +1,5 @@
-// UserService.cs
+using System.Linq;
+using System.Threading.Tasks;
 using AutoMapper;
 using ikea_business.DTO;
 using ikea_business.Helpers;
@@ -6,7 +7,7 @@ using ikea_business.Services.Interfaces;
 using ikea_data.Models;
 using ikea_data.Repositories.Interfaces;
 
-namespace ikea_business.Services
+namespace ikea_business.Services.Implementations
 {
     public class UserService : IUserService
     {
@@ -18,41 +19,43 @@ namespace ikea_business.Services
             _map = map;
         }
 
-        public async Task<IEnumerable<object>> GetAllAsync()
+        public async Task<(IEnumerable<object> items, int totalCount)> GetPagedAsync(int page, int pageSize)
         {
-            var list = await _uow.Users.GetAllAsync();
-            return list.Select(u => new
-            {
-                u.Id,
-                u.IsAdmin,
-                u.FirstName,
-                u.LastName,
-                u.BirthDate,
-                u.Country,
-                u.Address,
-                u.Phone,
-                u.Email
-            });
+            var all = await _uow.Users.GetAllAsync();
+            var totalCount = all.Count();
+            var items = all
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .Select(u => new
+                {
+                    u.Id,
+                    u.IsAdmin,
+                    u.FirstName,
+                    u.LastName,
+                    u.Email
+                })
+                .ToList();
+            return (items, totalCount);
+        }
+
+        public Task<IEnumerable<object>> GetAllAsync()
+        {
+            throw new NotImplementedException();
         }
 
         public async Task<object?> GetAsync(int id)
         {
             var u = await _uow.Users.GetByIdAsync(id);
             if (u == null) return null;
-
-            var cards = await _uow.UserCards.GetAllAsync();
-            var userCards = cards
-                .Where(c => c.UserId == id)
-                .Select(c => new
-                {
-                    c.Id,
-                    c.CardNumber,
-                    c.ValidDay,
-                    c.ValidYear,
-                    c.CardType
-                })
-                .ToList();
-
+            var cards = await _uow.UserCards.FindAsync(c => c.UserId == id);
+            var userCards = cards.Select(c => new
+            {
+                c.Id,
+                c.CardNumber,
+                c.ValidDay,
+                c.ValidYear,
+                c.CardType
+            });
             return new
             {
                 u.Id,
@@ -64,11 +67,9 @@ namespace ikea_business.Services
                 u.Address,
                 u.Phone,
                 u.Email,
-                Card = userCards
-
+                Cards = userCards
             };
         }
-
 
         public async Task<int> CreateAsync(UserInput dto)
         {
@@ -76,7 +77,6 @@ namespace ikea_business.Services
             PasswordHasher.CreateHash(dto.Password, out var hash, out var salt);
             entity.PasswordHash = hash;
             entity.PasswordSalt = salt;
-
             await _uow.Users.AddAsync(entity);
             await _uow.SaveAsync();
             return entity.Id;
@@ -86,9 +86,7 @@ namespace ikea_business.Services
         {
             var e = await _uow.Users.GetByIdAsync(id);
             if (e == null) return false;
-
             _map.Map(dto, e);
-           
             _uow.Users.Update(e);
             await _uow.SaveAsync();
             return true;
@@ -98,11 +96,9 @@ namespace ikea_business.Services
         {
             var user = await _uow.Users.GetByIdAsync(id);
             if (user == null) return false;
-
             PasswordHasher.CreateHash(newPassword, out var hash, out var salt);
             user.PasswordHash = hash;
             user.PasswordSalt = salt;
-
             _uow.Users.Update(user);
             await _uow.SaveAsync();
             return true;
@@ -116,18 +112,13 @@ namespace ikea_business.Services
             await _uow.SaveAsync();
             return true;
         }
-        
+
         public async Task<User?> AuthenticateAsync(string email, string password)
         {
             var users = await _uow.Users.GetAllAsync();
             var user = users.FirstOrDefault(u => u.Email.ToLower() == email.ToLower());
-
             if (user == null) return null;
-            
-            bool isPasswordValid = PasswordHasher.Verify(password, user.PasswordHash, user.PasswordSalt);
-            if (!isPasswordValid) return null;
-
-            return user;
+            return PasswordHasher.Verify(password, user.PasswordHash, user.PasswordSalt) ? user : null;
         }
     }
 }

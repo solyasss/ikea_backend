@@ -1,5 +1,4 @@
 using ikea_business.DTO;
-using ikea_business.Services;
 using ikea_business.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,9 +11,13 @@ namespace ikea_backend.Controllers
         private readonly IUserService _svc;
         public UsersController(IUserService svc) => _svc = svc;
 
-        [HttpGet]
-        public async Task<IActionResult> GetAll() =>
-            Ok(await _svc.GetAllAsync());
+       
+        [HttpGet("paged")]
+        public async Task<IActionResult> GetPaged([FromQuery] int page = 1, [FromQuery] int pageSize = 10)
+        {
+            var (items, totalCount) = await _svc.GetPagedAsync(page, pageSize);
+            return Ok(new { items, totalCount });
+        }
 
         [HttpGet("{id:int}")]
         public async Task<IActionResult> Get(int id) =>
@@ -36,10 +39,8 @@ namespace ikea_backend.Controllers
         {
             if (string.IsNullOrWhiteSpace(dto.Password))
                 return BadRequest("Password is required");
-
-            var success = await _svc.ChangePasswordAsync(id, dto.Password);
-            if (!success) return NotFound();
-
+            if (!await _svc.ChangePasswordAsync(id, dto.Password))
+                return NotFound();
             return Ok();
         }
 

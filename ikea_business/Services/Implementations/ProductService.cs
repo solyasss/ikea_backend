@@ -15,6 +15,27 @@ namespace ikea_business.Services
             _uow = uow;
             _mapper = mapper;
         }
+        public async Task<(IEnumerable<object> items, int totalCount)> GetPagedAsync(int page, int pageSize)
+        {
+            var all = await _uow.Products.GetAllAsync();
+            var totalCount = all.Count();
+
+            var items = all
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .Select(p => new
+                {
+                    p.Id,
+                    p.Article,
+                    p.Name,
+                    p.Price,
+                    p.MainImage,
+                    p.Description
+                })
+                .ToList();
+
+            return (items, totalCount);
+        }
 
         public async Task<IEnumerable<object>> GetAllAsync()
         {
@@ -29,6 +50,7 @@ namespace ikea_business.Services
                 p.Description   
             });
         }
+        
 
         public async Task<object?> GetAsync(int id)
         {
