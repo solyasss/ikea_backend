@@ -27,9 +27,16 @@ namespace ikea_backend.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(ProductCommentInput dto)
         {
-            var id = await _productCommentService.CreateAsync(dto);
+            var userId = HttpContext.Session.GetInt32("UserId");
+            if (userId == null)
+                return Unauthorized(new { message = "User must be logged in to comment" });
+
+            var commentInput = dto with { UserId = userId.Value };
+
+            var id = await _productCommentService.CreateAsync(commentInput);
             return CreatedAtAction(nameof(Get), new { id }, new { id });
         }
+
 
         [HttpPut("{id:int}")]
         public async Task<IActionResult> Update(int id, ProductCommentInput dto) =>

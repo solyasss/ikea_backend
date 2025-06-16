@@ -57,10 +57,10 @@ builder.Services.AddScoped<ICartService, CartService>();
 builder.Services.AddScoped<IOrderService, OrderService>();
 
 // CORS
-builder.Services.AddCors(opts =>
-{
-    opts.AddDefaultPolicy(p => p.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
-});
+//builder.Services.AddCors(opts =>
+//{
+//    opts.AddDefaultPolicy(p => p.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
+//});
 
 builder.Services.AddDistributedSqlServerCache(options =>
 {
@@ -71,11 +71,24 @@ builder.Services.AddDistributedSqlServerCache(options =>
 
 builder.Services.AddSession(options =>
 {
-    options.IdleTimeout = TimeSpan.FromDays(7);  
-    options.Cookie.HttpOnly = true;              
-    options.Cookie.IsEssential = true;         
+    options.IdleTimeout = TimeSpan.FromDays(7);
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+    options.Cookie.SameSite = SameSiteMode.None; 
+    options.Cookie.SecurePolicy = CookieSecurePolicy.Always; 
 });
 
+
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(policy =>
+    {
+        policy.WithOrigins("http://localhost:5173") 
+              .AllowAnyHeader()
+              .AllowAnyMethod()
+              .AllowCredentials(); 
+    });
+});
 
 // Swagger
 builder.Services.AddControllers();
