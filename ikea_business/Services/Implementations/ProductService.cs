@@ -112,5 +112,22 @@ namespace ikea_business.Services
             await _uow.SaveAsync();
             return true;
         }
+
+        public async Task<IEnumerable<object>> SearchByNameAsync(string name)
+        {
+            var products = await _uow.Products.GetAllAsync();
+            return products
+                .Where(p => p.Name.Contains(name, StringComparison.OrdinalIgnoreCase))
+                .Select(p => new
+                {
+                    p.Id,
+                    p.Article,
+                    p.Name,
+                    p.Price,
+                    p.MainImage,
+                    p.Description
+                });
+        }
+
     }
 }

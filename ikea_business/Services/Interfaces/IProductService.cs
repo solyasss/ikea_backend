@@ -10,5 +10,7 @@ public interface IProductService
     Task<int>                 CreateAsync(ProductInput dto);
     Task<bool>                UpdateAsync(int id, ProductInput dto);
     Task<bool>                DeleteAsync(int id);
-    
+    Task<IEnumerable<object>> SearchByNameAsync(string name);
+
+
 }

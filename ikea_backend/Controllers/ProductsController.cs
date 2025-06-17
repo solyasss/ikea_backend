@@ -40,5 +40,13 @@ namespace ikea_backend.Controllers
         [HttpDelete("{id:int}")]
         public async Task<IActionResult> Delete(int id) =>
             await _svc.DeleteAsync(id) ? Ok(new { id }) : NotFound();
+
+        [HttpGet("search")]
+        public async Task<IActionResult> Search([FromQuery] string name)
+        {
+            var results = await _svc.SearchByNameAsync(name);
+            return Ok(results);
+        }
+
     }
 }
