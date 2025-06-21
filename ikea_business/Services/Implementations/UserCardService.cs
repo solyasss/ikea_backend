@@ -56,4 +56,21 @@ public class UserCardService : IUserCardService
         await _uow.SaveAsync();
         return true;
     }
+
+    public async Task<object?> GetByUserIdAsync(int userId)
+    {
+        var card = await _uow.UserCards.GetByUserIdAsync(userId); 
+
+        return card == null ? null : new
+        {
+            card.Id,
+            card.UserId,
+            card.CardNumber,
+            card.ValidDay,
+            card.ValidYear,
+            card.CardType
+        };
+    }
+
+
 }

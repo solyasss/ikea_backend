@@ -29,4 +29,9 @@ public class UserCardsController : ControllerBase
     [HttpDelete("{id:int}")]
     public async Task<IActionResult> Delete(int id) =>
         await _svc.DeleteAsync(id) ? Ok(new { id }) : NotFound();
+
+    [HttpGet("by-user/{userId:int}")]
+    public async Task<IActionResult> GetByUserId(int userId) =>
+    await _svc.GetByUserIdAsync(userId) is { } card ? Ok(card) : NotFound();
+
 }

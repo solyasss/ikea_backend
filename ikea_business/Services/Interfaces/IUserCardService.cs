@@ -8,4 +8,6 @@ public interface IUserCardService
     Task<object?>             GetAsync(int id);
     Task<int>                 CreateAsync(UserCardInput dto);
     Task<bool>                DeleteAsync(int id);
+    Task<object?> GetByUserIdAsync(int userId);
+
 }
