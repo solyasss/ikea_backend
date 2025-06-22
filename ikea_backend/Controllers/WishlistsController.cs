@@ -55,4 +55,24 @@ public class WishlistsController : ControllerBase
         HttpContext.Session.Remove(WishlistSessionKey);
         return Ok(new { message = "Wishlist cleared" });
     }
+
+    [HttpDelete("remove/{productId}")]
+    public IActionResult RemoveFromWishlist(int productId)
+    {
+        var wishlistJson = HttpContext.Session.GetString(WishlistSessionKey);
+        if (string.IsNullOrEmpty(wishlistJson))
+            return NotFound(new { message = "Wishlist is empty" });
+
+        var wishlist = JsonSerializer.Deserialize<List<WishlistInput>>(wishlistJson)!;
+
+        var itemToRemove = wishlist.FirstOrDefault(x => x.ProductId == productId);
+        if (itemToRemove == null)
+            return NotFound(new { message = "Product not found in wishlist" });
+
+        wishlist.Remove(itemToRemove);
+
+        HttpContext.Session.SetString(WishlistSessionKey, JsonSerializer.Serialize(wishlist));
+        return Ok(new { message = "Product removed from wishlist" });
+    }
+
 }

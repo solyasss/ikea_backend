@@ -68,4 +68,19 @@ public class CartsController : ControllerBase
         HttpContext.Session.Remove(CartSessionKey);
         return Ok(new { message = "Cart cleared" });
     }
+
+    [HttpDelete("remove/{productId}")]
+    public IActionResult RemoveFromCart(int productId)
+    {
+        var cartJson = HttpContext.Session.GetString(CartSessionKey);
+        var cart = string.IsNullOrEmpty(cartJson)
+            ? new List<CartInput>()
+            : JsonSerializer.Deserialize<List<CartInput>>(cartJson)!;
+
+        cart = cart.Where(item => item.ProductId != productId).ToList();
+
+        HttpContext.Session.SetString(CartSessionKey, JsonSerializer.Serialize(cart));
+        return Ok(new { message = "Item removed from cart" });
+    }
+
 }
