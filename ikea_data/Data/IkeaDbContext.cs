@@ -3,6 +3,8 @@ using ikea_data.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ikea_data.Data
 {
@@ -28,7 +30,19 @@ namespace ikea_data.Data
         public DbSet<Cart> Carts => Set<Cart>();
         public DbSet<Order> Orders => Set<Order>();
 
+        
+        [Table("Sessions")]
+        public class SqlServerCacheEntry
+        {
+            [Key, MaxLength(449)]               // соответствует PK, который создаёт dotnet-sql-cache
+            public string Id { get; set; } = default!;
 
+            [Required] public byte[] Value { get; set; } = default!;
+
+            public DateTimeOffset ExpiresAtTime           { get; set; }
+            public long           SlidingExpirationInSeconds { get; set; }
+            public DateTimeOffset? AbsoluteExpiration     { get; set; }
+        }
         
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -153,7 +167,13 @@ namespace ikea_data.Data
                 );
             });
 
+            modelBuilder.Entity<SqlServerCacheEntry>(e =>
+            {
+                e.HasKey(c => c.Id);
 
+                e.HasIndex(c => c.ExpiresAtTime)
+                    .HasDatabaseName("Index_ExpiresAtTime");
+            });
 
             // ---------- сиды ----------
             modelBuilder.Entity<UserCard>().HasData(

@@ -10,17 +10,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6ff53050-cde2-4ad4-ba68-a2aade37d1fd" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.ikea_backend/.idea/.name" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ikea_backend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ikea_backend/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ikea_backend/Controllers/CategoriesController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ikea_backend/Controllers/CategoriesController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ikea_backend/Controllers/ProductsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ikea_backend/Controllers/ProductsController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ikea_backend/Controllers/UsersController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ikea_backend/Controllers/UsersController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ikea_business/Services/Implementations/CategoryService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ikea_business/Services/Implementations/CategoryService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ikea_business/Services/Implementations/ProductService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ikea_business/Services/Implementations/ProductService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ikea_business/Services/Implementations/UserService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ikea_business/Services/Implementations/UserService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ikea_business/Services/Interfaces/ICategoryService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ikea_business/Services/Interfaces/ICategoryService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ikea_business/Services/Interfaces/IProductService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ikea_business/Services/Interfaces/IProductService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ikea_business/Services/Interfaces/IUserService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ikea_business/Services/Interfaces/IUserService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ikea_data/Repositories/Implementations/GenericRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ikea_data/Repositories/Implementations/GenericRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ikea_backend/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ikea_backend/appsettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ikea_data/Data/IkeaDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ikea_data/Data/IkeaDbContext.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,7 +21,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="DpaMonitoringSettings">
-    <option name="autoShow" value="false" />
+    <option name="firstShow" value="false" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -41,8 +34,8 @@
 }</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;git@github.com:solyasss/ikea_backend.git&quot;,
-    &quot;accountId&quot;: &quot;cb8bcd66-47e7-4e80-949b-efd93a996ce6&quot;
+    &quot;url&quot;: &quot;https://github.com/solyasss/ikea_backend.git&quot;,
+    &quot;accountId&quot;: &quot;5067273c-6e2f-4125-b412-37a658c0f60e&quot;
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
@@ -52,7 +45,7 @@
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="SWEA" />
+    <option name="selectedTabId" value="Toolset" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
@@ -72,6 +65,7 @@
     &quot;.NET Launch Settings Profile.ikea_backend: http.executor&quot;: &quot;Run&quot;,
     &quot;.NET Launch Settings Profile.ikea_backend: https.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;last_opened_file_path&quot;: &quot;D:/Desktop/test&quot;,
@@ -164,6 +158,8 @@
       <workItem from="1748710569878" duration="7260000" />
       <workItem from="1749463922054" duration="6395000" />
       <workItem from="1750004297748" duration="4410000" />
+      <workItem from="1751395618992" duration="1438000" />
+      <workItem from="1751397081170" duration="1031000" />
     </task>
     <servers />
   </component>
